@@ -31,5 +31,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Admin Dashboard Route without admin group
-Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::prefix('/admin')->group(function(){
+    // admin login
+    Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
+    Route::group(['middleware' => ['admin']], function(){
+        // Admin Dashboard
+        Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    });
+});
