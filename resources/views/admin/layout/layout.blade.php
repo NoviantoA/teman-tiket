@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,21 +28,23 @@
 
     @stack('scripts')
 </head>
+
 <body>
-<div class="container-scroller">
-    @include('admin.layout.header')
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-scroller">
+        @include('admin.layout.header')
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
 
-        @include('admin.layout.sidebar')
+            @include('admin.layout.sidebar')
 
-        @yield('content')
+            @yield('content')
 
-        <!-- main-panel ends -->
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
-    <!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
+    <!-- container-scroller -->
+
 
 @if(Session::has('success_message'))
     <script>
@@ -91,7 +92,7 @@
 <script src="{{ url('admin/js/custom.js') }}"></script>
 {{-- end custom admin js --}}
 @stack('scripts')
+
 </body>
 
 </html>
-
