@@ -37,5 +37,15 @@ Route::prefix('/admin')->group(function(){
     Route::group(['middleware' => ['admin']], function(){
         // Admin Dashboard
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        // logout
+        Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
+        // update admin password
+        Route::match(['get', 'post'], 'update-admin-password', [AdminController::class, 'updateAdminPassword'])->name('update.admin.password');
+        // check admin password
+        Route::post('check-admin-password', [AdminController::class, 'checkAdminPassword'])->name('check.admin.password');
+        // update admin details
+        Route::match(['get', 'post'], 'update-admin-details', [AdminController::class, 'updateAdminDetails'])->name('update.admin.details');
+        // update vendor details
+        Route::match(['get', 'post'], 'update-vendor-details/{slug}', [AdminController::class, 'updateVendorDetails'])->name('update.vendor.details');
     });
 });

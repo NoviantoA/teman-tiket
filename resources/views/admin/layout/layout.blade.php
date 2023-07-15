@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Skydash Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('admin/vendors/feather/feather.css') }}">
@@ -21,6 +22,12 @@
     <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ url('admin/images/favicon.png') }}" />
+     <!-- SweetAlert 2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  <!-- SweetAlert  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @stack('scripts')
 </head>
 <body>
 <div class="container-scroller">
@@ -37,6 +44,27 @@
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
+
+@if(Session::has('success_message'))
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get("success_message") }}'
+        });
+    </script>
+@endif
 
 <!-- plugins:js -->
 <script src="{{ url('admin/vendors/js/vendor.bundle.base.js') }}"></script>
@@ -59,6 +87,10 @@
 <script src="{{ url('admin/js/dashboard.js') }}"></script>
 <script src="{{ url('admin/js/Chart.roundedBarCharts.js') }}"></script>
 <!-- End custom js for this page-->
+{{-- custom admin js --}}
+<script src="{{ url('admin/js/custom.js') }}"></script>
+{{-- end custom admin js --}}
+@stack('scripts')
 </body>
 
 </html>
