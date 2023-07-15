@@ -12,17 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendors', function (Blueprint $table) {
+        Schema::create('vendors_bank_details', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->string('province');
-            $table->string('country');
-            $table->string('pincode');
-            $table->string('mobile');
-            $table->string('email')->unique();
-            $table->tinyInteger('status');
+            $table->integer('vendor_id');
+            $table->string('account_holder_name');
+            $table->string('bank_name');
+            $table->string('account_number');
+            $table->string('bank_ifsc_code');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendors');
+        Schema::dropIfExists('vendors_bank');
     }
 };

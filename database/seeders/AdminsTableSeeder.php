@@ -25,6 +25,17 @@ class AdminsTableSeeder extends Seeder
             'password' => Hash::make('temantiketkita'),
             'image' => '',
             'status' => 1
+          ],
+          [
+            'id' => 2,
+            'name' => 'Novianto Anggoro',
+            'type' => 'vendor',
+            'vendor_id' => 1,
+            'mobile' =>  '08963919273912',
+            'email' => 'novianto@gmail.com',
+            'password' => Hash::make('12345'),
+            'image' => '',
+            'status' => 0
           ]
         ];
         Admin::insert($adminRecords);

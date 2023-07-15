@@ -18,6 +18,12 @@
   <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('admin/images/favicon.png')}}" />
+  <!-- SweetAlert 2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  <!-- SweetAlert  -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  @stack('scripts')
 </head>
 
 <body>
@@ -32,15 +38,28 @@
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
+
+              {{-- @if (Session::has('error_message'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{ Session::get('error_message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              @endif --}}
+
+
+
+              <form class="pt-3" action="{{ route('admin.login') }}" method="post">
+                @csrf
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+                  <input type="text" name="email" id="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" name="password" id="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{{ url('admin/index.html')}}">SIGN IN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
@@ -70,6 +89,68 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
+
+
+
+            @if(Session::has('error_message'))
+              @push('scripts')
+                <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "{{ Session::get('error_message') }}",
+                    showConfirmButton: false,
+                    timer: 3000 // milliseconds
+                });
+                </script>
+              @endpush
+            @endif
+
+            @if(Session::has('success_message_logout'))
+              <script>
+                  const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      showConfirmButton: false,
+                      timer: 3000,
+                      timerProgressBar: true,
+                      didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer);
+                          toast.addEventListener('mouseleave', Swal.resumeTimer);
+                      }
+                  });
+
+                  Toast.fire({
+                      icon: 'success',
+                      title: '{{ Session::get("success_message_logout") }}'
+                  });
+              </script>
+            @endif
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <script>
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer);
+                                toast.addEventListener('mouseleave', Swal.resumeTimer);
+                            }
+                        });
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            html: '{{ $error }}'
+                        });
+                    </script>
+                @endforeach
+            @endif
+
   <script src="{{ url('admin/vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -81,6 +162,7 @@
   <script src="{{ url('admin/js/settings.js')}}"></script>
   <script src="{{ url('admin/js/todolist.js')}}"></script>
   <!-- endinject -->
+  @stack('scripts')
 </body>
 
 </html>
