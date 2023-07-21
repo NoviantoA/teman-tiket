@@ -6,8 +6,7 @@
 </head>
 
 <body>
-    @includeIf('pages.user.layouts.navbar')
-    @stack('breadcrumb')
+    @yield('navbar')
     @yield('content')
     @includeIf('pages.user.layouts.footer')
     @includeIf('pages.user.layouts.script')

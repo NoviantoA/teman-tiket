@@ -11,35 +11,6 @@
 @endsection
 @section('content')
     <div class="page-content page-home">
-        <section class="store-carousel">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12" data-aos="zoom-in">
-                        <div id="storeCarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#storeCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#storeCarousel" data-slide-to="1"></li>
-                                <li data-target="#storeCarousel" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('user/images/konser.jpg') }}" class="d-block img-fluid"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('user/images/konser.jpg') }}" class="d-block w-100"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{ asset('user/images/konser.jpg') }}" class="d-block w-100"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="events-home mt-4">
             <div class="container">
                 <div class="row">

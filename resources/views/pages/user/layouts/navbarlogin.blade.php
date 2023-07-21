@@ -23,11 +23,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Transaction</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register.html">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-success nav-link px-4 text-white" href="/login.html">Sign In</a>
+                </ul>
+                <!-- Desktop Menu -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ asset('user/images/icon-user.png') }} " alt=""
+                                class="rounded-circle mr-2 profile-picture" />
+                            Hi, Angga
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/dashboard-account.html">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/">Logout</a>
+                        </div>
                     </li>
                 </ul>
 
