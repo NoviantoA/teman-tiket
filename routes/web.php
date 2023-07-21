@@ -19,9 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Dashboard After Login
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('pages.user.dashboard');
+})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('pages.admin.dashboard');
+})->middleware(['auth'])->name('dashboard');
+Route::get('/mitra/dashboard', function () {
+    return view('pages.mitra.dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,7 +43,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::prefix('/admin')->group(function(){
+Route::prefix('/adminweb')->group(function(){
     // admin login
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
     Route::group(['middleware' => ['admin']], function(){

@@ -3,28 +3,32 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+            <a class="nav-link" href="">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        @if (Auth::guard('admin')->user()->type == "vendor")
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <i class="icon-layout menu-icon"></i>
-                <span class="menu-title">Vendor Details</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.vendor.details', ['slug' => 'personal']) }}">Personal</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.vendor.details', ['slug' => 'business']) }}">Business</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.vendor.details', ['slug' => 'bank']) }}">Bank</a></li>
-                </ul>
-            </div>
-        </li>
-        @else
-        <li class="nav-item">
+        {{-- @if (Auth::guard('admin')->user()->type == 'vendor')
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                    aria-controls="ui-basic">
+                    <i class="icon-layout menu-icon"></i>
+                    <span class="menu-title">Vendor Details</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{{ route('update.vendor.details', ['slug' => 'personal']) }}">Personal</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{{ route('update.vendor.details', ['slug' => 'business']) }}">Business</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{{ route('update.vendor.details', ['slug' => 'bank']) }}">Bank</a></li>
+                    </ul>
+                </div>
+            </li>
+        @else --}}
+        {{-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-layout menu-icon"></i>
                 <span class="menu-title">Settings</span>
@@ -32,21 +36,25 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.admin.password') }}">Update Password</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.admin.details') }}">Update Details</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.admin.password') }}">Update
+                            Password</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('update.admin.details') }}">Update
+                            Details</a></li>
                 </ul>
             </div>
         </li>
-        @endif
+        @endif --}}
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
+                aria-controls="form-elements">
                 <i class="icon-columns menu-icon"></i>
                 <span class="menu-title">Form elements</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a>
+                    </li>
                 </ul>
             </div>
         </li>

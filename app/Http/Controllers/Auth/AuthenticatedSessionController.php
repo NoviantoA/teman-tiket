@@ -9,6 +9,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -25,11 +28,47 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // dd($request->all());
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+
+        # Get data user
+        $user = User::leftJoin('roles', 'roles.role_id', '=', 'users.role_id')
+            ->whereRaw('email = ? ', [$request->email])->first();
+
+        
+        // array for session
+        $session = array(
+            'isLogin' => 'Berhasil Login',
+            'user_nama' => $user->name,
+            'user_role' => $user->role_name,
+        );
+
+        session($session);
+
+        switch ($user->role_id) {
+            case 1:
+                return redirect()->intended(RouteServiceProvider::HOMEADMIN);
+                break;
+            case 2:
+                return redirect()->intended(RouteServiceProvider::HOMEADMIN);
+                break;
+            case 3:
+                return redirect()->intended(RouteServiceProvider::HOMEMITRA);
+                break;
+            case 4:
+                return redirect()->intended(RouteServiceProvider::HOMEUSER);
+                break;
+            
+            default:
+                return redirect()->intended(RouteServiceProvider::HOMEUSER);
+                break;
+        }
+
+
+        
     }
 
     /**
