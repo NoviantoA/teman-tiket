@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/coba', function () {
-    return view('pages.user.pages.transactionListWaitingPayment');
+    return view('pages.mitra.pages.events.addEvents');
 });
 Route::get('/', function () {
     return view('welcome');
