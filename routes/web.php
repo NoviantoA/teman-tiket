@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/coba', function () {
+    return view('pages.mitra.pages.events.addEvents');
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,12 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::prefix('/adminweb')->group(function(){
+Route::prefix('/adminweb')->group(function () {
     // admin login
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
-    Route::group(['middleware' => ['admin']], function(){
+    Route::group(['middleware' => ['admin']], function () {
         // Admin Dashboard
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         // logout
