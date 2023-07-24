@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,14 +27,19 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
-Route::get('/mitra/dashboard', function () {
-    return view('pages.mitra.dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard');
 
 
 
 
+// Defined Route for Mitra Previlege
+Route::middleware(['auth', 'mitra'])->group(function () {
+    Route::get('/mitra/dashboard', function () {
+        return view('pages.mitra.dashboard');
+    })->name('dashboard');
+    Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');
+    
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

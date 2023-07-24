@@ -46,7 +46,13 @@ class AuthenticatedSessionController extends Controller
             'user_role' => $user->role_name,
         );
 
-        session($session);
+        session([
+            'isLogin' => 'Berhasil Login',
+            'user_nama' => $user->name,
+            'user_role' => $user->role_name,
+        ]);
+
+        Session::flash('user_role', $user->role_name);
 
         switch ($user->role_id) {
             case 1:

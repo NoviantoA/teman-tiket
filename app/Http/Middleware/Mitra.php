@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+
+class Mitra
 {
     /**
      * Handle an incoming request.
@@ -15,16 +16,16 @@ class Admin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+    {   
         switch (Auth::user()->role_id) {
             case 1:
-                return $next($request);
+                return redirect('/admin/dashboard');
                 break;
             case 2:
-                return $next($request);
+                return redirect('/admin/dashboard');
                 break;
             case 3:
-                return redirect('/mitra/dashboard');
+                return $next($request);
                 break;
             case 4:
                 return redirect('/dashboard');
