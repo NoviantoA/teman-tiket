@@ -15,12 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< Updated upstream
-=======
-Route::get('/coba', function () {
-    return view('pages.admin.dashboard');
-});
->>>>>>> Stashed changes
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,12 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::prefix('/admin')->group(function(){
+Route::prefix('/admin')->group(function () {
     // admin login
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
-    Route::group(['middleware' => ['admin']], function(){
+    Route::group(['middleware' => ['admin']], function () {
         // Admin Dashboard
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         // logout
