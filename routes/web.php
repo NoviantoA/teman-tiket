@@ -20,7 +20,7 @@ Route::get('/coba', function () {
     return view('pages.mitra.pages.events.addEvents');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.user.pages.index');
 });
 
 
@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
-})->middleware(['auth', 'admin'])->name('dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 
 
@@ -39,8 +39,11 @@ Route::get('/admin/dashboard', function () {
 Route::middleware(['auth', 'mitra'])->group(function () {
     Route::get('/mitra/dashboard', function () {
         return view('pages.mitra.dashboard');
-    })->name('dashboard');
+    })->name('mitra.dashboard');
     Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');
+    Route::post('/mitra/add/events', [EventController::class, 'post'])->name('events.post');
+    Route::put('/mitra/{id}/events', [EventController::class, 'update'])->name('events.update');
+    Route::delete('/mitra/{id}/events', [EventController::class, 'delete'])->name('events.delete');
     
 });
 

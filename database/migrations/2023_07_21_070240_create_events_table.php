@@ -12,7 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
+            $table->id('event_id');
+            $table->foreignId("user_id");
+            $table->integer("ticket_id");
+            $table->integer("transaction_id");
+            $table->integer("wishlist_id");
+            $table->integer("talent_id");
+            $table->integer("event_price");
+            $table->string("event_name");
+            $table->string("event_location");
+            $table->string("event_date");
+            $table->string("event_city");
+            $table->string("event_poster");
+            $table->string("event_description");
+            $table->string("event_tag");
             $table->timestamps();
         });
     }

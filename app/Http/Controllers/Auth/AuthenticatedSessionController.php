@@ -39,21 +39,6 @@ class AuthenticatedSessionController extends Controller
             ->whereRaw('email = ? ', [$request->email])->first();
 
         
-        // array for session
-        $session = array(
-            'isLogin' => 'Berhasil Login',
-            'user_nama' => $user->name,
-            'user_role' => $user->role_name,
-        );
-
-        session([
-            'isLogin' => 'Berhasil Login',
-            'user_nama' => $user->name,
-            'user_role' => $user->role_name,
-        ]);
-
-        Session::flash('user_role', $user->role_name);
-
         switch ($user->role_id) {
             case 1:
                 return redirect()->intended(RouteServiceProvider::HOMEADMIN);

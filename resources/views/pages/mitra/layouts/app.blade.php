@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Teman Tiket</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('admin/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ url('admin/vendors/ti-icons/css/themify-icons.css') }}">
@@ -23,8 +24,7 @@
     <link rel="shortcut icon" href="{{ url('admin/images/favicon.png') }}" />
     <!-- SweetAlert 2 CSS -->
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11"> --}}
-    <!-- SweetAlert  -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     @stack('css')
 </head>
@@ -88,9 +88,11 @@
     <script src="{{ url('admin/js/dashboard.js') }}"></script>
     <script src="{{ url('admin/js/Chart.roundedBarCharts.js') }}"></script>
     <!-- End custom js for this page-->
-    custom admin js
     <script src="{{ url('admin/js/custom.js') }}"></script>
     {{-- end custom admin js --}}
+
+    <!-- SweetAlert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('scripts')
 
 </body>
