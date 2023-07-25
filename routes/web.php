@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/coba', function () {
     return view('pages.mitra.pages.account.setting');
 });
+
 Route::get('/', function () {
     return view('pages.user.pages.index');
 });
@@ -61,7 +63,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::prefix('/adminweb')->group(function () {
+Route::prefix('/admin')->group(function () {
     // admin login
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
     Route::group(['middleware' => ['admin']], function () {
