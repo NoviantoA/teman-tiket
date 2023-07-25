@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/coba', function () {
-    return view('pages.mitra.pages.events.addEvents');
+    return view('pages.mitra.pages.account.setting');
 });
 Route::get('/', function () {
     return view('pages.user.pages.index');
