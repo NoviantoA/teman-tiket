@@ -47,7 +47,7 @@
             <div class="collapse" id="bank">
                 <ul class="nav flex-column sub-menu">
                     {{-- add Events  --}}
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Add Account Bank</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('bank.get') }}">Add Account Bank</a>
                     </li>
                     {{-- edit update events  --}}
                     <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Manage Bank
