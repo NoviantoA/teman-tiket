@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
-@extends('admin.layout.layout')
-=======
 @extends('pages.admin.layouts.app')
->>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -10,13 +6,8 @@
                 <div class="col-md-12 grid-margin">
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
-                            <h3 class="font-weight-bold">Welcome {{ Auth::guard('admin')->user()->name }}</h3>
-                            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have</h6>
-=======
                             <h3 class="font-weight-bold">Welcome {{ Auth::user()->name }}</h3>
                             <h6 class="font-weight-normal mb-0">Semangat Cari Cuan, Semoga Sehat Selalu!!</h6>
->>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
                         </div>
                     </div>
                 </div>
@@ -813,12 +804,8 @@
             </div>
         </div>
         <!-- content-wrapper ends -->
-<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
+        {{-- @include('admin.layout.footer') --}}
 
-        @include('admin.layout.footer')
-
-=======
->>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
     </div>
 @endsection
 @push('addon-script')
