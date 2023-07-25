@@ -5,6 +5,11 @@
         href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
+    <style>
+        .dataTables_wrapper .dataTable .btn {
+            padding: 1rem 1rem;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -13,8 +18,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="header">
-                            <h3>Diskon</h3>
-                            <p>Diskon Teman Tiket</p>
+                            <h3>Admin</h3>
+                            <p>Data Admin</p>
                         </div>
                         <div class="body">
 
@@ -23,11 +28,10 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">No</th>
-                                            <th>Kode Diskon</th>
-                                            <th>Jumlah Diskon</th>
-                                            <th>Tanggal Mulai</th>
-                                            <th>Tanggal Selesai</th>
-
+                                            <th>Nama Admin</th>
+                                            <th>Gmail</th>
+                                            <th>Pasword</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -36,98 +40,154 @@
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
                                             <td>61</td>
-                                            <td>2011/04/25</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
+                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
+                                            </td>
+
                                         </tr>
 
                                     </tbody>

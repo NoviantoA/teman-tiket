@@ -15,22 +15,6 @@
                                 <input type="text" class="form-control" id="rekening" placeholder="Nama Mitra">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Gmail Mitra</label>
-                                <input type="text" class="form-control" id="rekening" placeholder="Gmail Mitra">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Username Mitra</label>
-                                <input type="text" class="form-control" id="rekening" placeholder="Username Mitra">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Password Mitra</label>
-                                <input type="text" class="form-control" id="rekening" placeholder="Password Mitra">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">Alamat Mitra</label>
-                                <input type="text" class="form-control" id="rekening" placeholder="Alamat Mitra">
-                            </div>
-                            <div class="form-group">
                                 <label for="exampleInputName1">Nama Penagung Jawab</label>
                                 <input type="text" class="form-control" id="rekening" placeholder="Nama Penagung Jawab">
                             </div>
@@ -40,15 +24,18 @@
                                     placeholder="Nomor Handphone Penangung Jawab">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Gmail Penangung Jawab</label>
-                                <input type="text" class="form-control" id="rekening"
-                                    placeholder="Gmail Penangung Jawab">
+                                <label for="exampleInputName1">Gmail Mitra</label>
+                                <input type="text" class="form-control" id="rekening" placeholder="Gmail Mitra">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputName1">Alamat Penangung Jawab</label>
-                                <input type="text" class="form-control" id="rekening"
-                                    placeholder="Alamat Penangung Jawab">
+                                <label for="exampleInputName1">Password Mitra</label>
+                                <input type="text" class="form-control" id="rekening" placeholder="Password Mitra">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Alamat Mitra</label>
+                                <input type="text" class="form-control" id="rekening" placeholder="Alamat Mitra">
+                            </div>
+
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                         </form>
