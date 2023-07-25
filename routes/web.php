@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Mitra\EventController;
+use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +41,15 @@ Route::middleware(['auth', 'mitra'])->group(function () {
     Route::get('/mitra/dashboard', function () {
         return view('pages.mitra.dashboard');
     })->name('mitra.dashboard');
+    
+    // Defining Route For CRUD Events
     Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');
     Route::post('/mitra/add/events', [EventController::class, 'post'])->name('events.post');
     Route::put('/mitra/{id}/events', [EventController::class, 'update'])->name('events.update');
     Route::delete('/mitra/{id}/events', [EventController::class, 'delete'])->name('events.delete');
+
+    // Defining Route For Bank Account Mitra
+    Route::get('/mitra/bank', [BankController::class, 'get'])->name('bank.get');
     
 });
 
