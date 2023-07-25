@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/coba', function () {
-    return view('pages.admin.pages.admin.admin');
+    return view('pages.admin.pages.diskon.view');
 });
 
 Route::get('/', function () {
