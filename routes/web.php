@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 
+=======
+Route::get('/coba', function () {
+    return view('pages.mitra.pages.account.setting');
+});
+>>>>>>> 84fd6cca74cc3d9d90c62f6f1e222b10a70e2f7b
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.user.pages.index');
 });
 
+
+// Dashboard After Login
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('pages.user.dashboard');
+})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('pages.admin.dashboard');
+})->middleware(['auth', 'admin'])->name('admin.dashboard');
+
+
+
+
+// Defined Route for Mitra Previlege
+Route::middleware(['auth', 'mitra'])->group(function () {
+    Route::get('/mitra/dashboard', function () {
+        return view('pages.mitra.dashboard');
+    })->name('mitra.dashboard');
+    Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');
+    Route::post('/mitra/add/events', [EventController::class, 'post'])->name('events.post');
+    Route::put('/mitra/{id}/events', [EventController::class, 'update'])->name('events.update');
+    Route::delete('/mitra/{id}/events', [EventController::class, 'delete'])->name('events.delete');
+    
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,7 +59,11 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+<<<<<<< HEAD
 Route::prefix('/admin')->group(function () {
+=======
+Route::prefix('/adminweb')->group(function () {
+>>>>>>> 84fd6cca74cc3d9d90c62f6f1e222b10a70e2f7b
     // admin login
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
     Route::group(['middleware' => ['admin']], function () {

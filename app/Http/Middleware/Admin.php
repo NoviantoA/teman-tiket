@@ -16,9 +16,19 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('admin')->check()){
-            return redirect('/admin/login');
+        switch (Auth::user()->role_id) {
+            case 1:
+                return $next($request);
+                break;
+            case 2:
+                return $next($request);
+                break;
+            case 3:
+                return redirect('/mitra/dashboard');
+                break;
+            case 4:
+                return redirect('/dashboard');
+                break;
         }
-        return $next($request);
     }
 }

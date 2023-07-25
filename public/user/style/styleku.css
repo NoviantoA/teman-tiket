@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 14pt;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.page-content {
+    margin-top: 100px;
+}
+
+footer {
+    border-top: 1px solid #e4e4e4;
+    margin-top: 150px;
+}
+
+footer p {
+    color: #979797;
+}
+
+.btn {
+    background-color: #f79050;
+    border: none;
+}
+
+.btn:hover {
+    background-color: goldenrod;
+    color: white;
+}
+
+.container {
+    margin: auto;
+    width: 100%;
+}
+.card {
+    background: #fefefe;
+    box-shadow: 0px 4px 15px #f1f1f8;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none !important;
+}
+
+.card .dashboard-card-title {
+    font-size: 16px;
+    color: #c5c5c5;
+}
+
+.card .dashboard-card-subtitle {
+    font-weight: 600;
+    font-size: 32px;
+    color: #0c0d36;
+}
+.store-breadcrumbs .breadcrumb {
+    background: transparent;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.store-breadcrumbs .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.store-breadcrumbs .breadcrumb .breadcrumb-item.active {
+    font-weight: 300;
+    color: #0c0d36;
+}
+
+.store-breadcrumbs .breadcrumb a {
+    color: #979797;
+}
+.card-dashboard-product {
+    margin-bottom: 10px;
+}
+
+.card-dashboard-product .card-body {
+    padding: 13px;
+}
+
+
+.card-dashboard-product .card-body .product-title {
+    font-weight: normal;
+    font-size: 18px;
+    color: #0c0d36;
+}
+
+.card-dashboard-product .card-body .product-category {
+    font-size: 16px;
+    line-height: 24px;
+    color: #c5c5c5;}
+.card-list {
+    margin-bottom: 10px;
+}
+
+.card-list .card-body {
+    font-size: 18px;
+    line-height: 40px;
+    color: #0c0d36;}
+    .navbar-store {
+            padding-top: 15px;
+        }
+    
+        @media (max-width: 991.98px) {
+            .navbar-store {
+                background-color: #fff !important;
+            }
+        }
+    
+        @media (min-width: 992px) {
+            .navbar-store .nav-item .nav-link {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    
+        .navbar-store .profile-picture {
+            max-height: 45px;
+        }
+    
+        .navbar-store .cart-badge {
+            display: inline-block;
+            min-width: 2em;
+            /* em unit */
+            padding: 0.3em;
+            /* em unit */
+            border-radius: 50%;
+            font-size: 10px;
+            text-align: center;
+            background: #29a867;
+            color: #fefefe;
+            margin-left: -10px;
+        }
+    
+        .navbar-fixed-top.scrolled {
+            background-color: #fff !important;
+            transition: background-color 200ms linear;
+        }
+
+.text-reset{
+    text-decoration: none;
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1540px;
+    }
+}
+
+.container-fluid,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+
+    .container-sm,
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container {
+        max-width: 1440px;
+    }
+}
