@@ -41,7 +41,7 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                 <i class="icon-columns menu-icon"></i>
-                <span class="menu-title">Form elements</span>
+                <span class="menu-title">Form</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="form-elements">

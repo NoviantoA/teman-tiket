@@ -23,24 +23,36 @@
     <link rel="shortcut icon" href="{{ url('admin/images/favicon.png') }}" />
     <!-- SweetAlert 2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <link rel="stylesheet" href="{{ asset('admin/vendors/font-awesome/css/font-awesome.min.css') }}">
     <!-- SweetAlert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @stack('scripts')
+    @stack('css')
 </head>
 
 <body>
     <div class="container-scroller">
+<<<<<<< Updated upstream:resources/views/admin/layout/layout.blade.php
         @include('admin.layout.header')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
 
             @include('admin.layout.sidebar')
+=======
+        @include('pages.admin.layouts.header')
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+
+            @include('pages.admin.layouts.sidebar')
+>>>>>>> Stashed changes:resources/views/pages/admin/layouts/app.blade.php
 
             @yield('content')
 
+
+
             <!-- main-panel ends -->
         </div>
+        @include('pages.admin.layouts.footer')
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->

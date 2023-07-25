@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
 @extends('admin.layout.layout')
+=======
+@extends('pages.admin.layouts.app')
+>>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -6,23 +10,99 @@
                 <div class="col-md-12 grid-margin">
                     <div class="row">
                         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
                             <h3 class="font-weight-bold">Welcome {{ Auth::guard('admin')->user()->name }}</h3>
                             <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have</h6>
+=======
+                            <h3 class="font-weight-bold">Welcome {{ Auth::user()->name }}</h3>
+                            <h6 class="font-weight-normal mb-0">Semangat Cari Cuan, Semoga Sehat Selalu!!</h6>
+>>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
                         </div>
-                        <div class="col-12 col-xl-4">
-                            <div class="justify-content-end d-flex">
-                                <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                                    <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button"
-                                        id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="true">
-                                        <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
-                                        <a class="dropdown-item" href="#">January - March</a>
-                                        <a class="dropdown-item" href="#">March - June</a>
-                                        <a class="dropdown-item" href="#">June - August</a>
-                                        <a class="dropdown-item" href="#">August - November</a>
-                                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 grid-margin transparent">
+                    <h3>Data Website Teman Tiket</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3 stretch-card transparent">
+                            <div class="card card-tale">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Mitra</p>
+                                    <p class="fs-30 mb-2">4006</p>
+                                    <p>Jumlah Mitra Yang Terdaftar</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3 stretch-card transparent">
+                            <div class="card card-dark-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Event</p>
+                                    <p class="fs-30 mb-2">61344</p>
+                                    <p>Jumlah event yang dibuat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-lg-0 stretch-card transparent">
+                            <div class="card card-light-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah User</p>
+                                    <p class="fs-30 mb-2">34040</p>
+                                    <p>Jumlah User Teman Tiket</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 stretch-card transparent">
+                            <div class="card card-light-danger">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Transaksi</p>
+                                    <p class="fs-30 mb-2">47033</p>
+                                    <p>Jumlah Transaksi Pada teman Tiket</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 grid-margin transparent">
+                    <h3>Data Withdraw</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-3 stretch-card transparent">
+                            <div class="card card-tale">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Total Withdraw</p>
+                                    <p class="fs-30 mb-2">4006</p>
+                                    <p>Jumlah Mitra Yang Terdaftar</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3 stretch-card transparent">
+                            <div class="card card-dark-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Withdraw Diajukan</p>
+                                    <p class="fs-30 mb-2">61344</p>
+                                    <p>Jumlah keselruhan Withdraw Diajukan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-lg-0 stretch-card transparent">
+                            <div class="card card-light-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Withdraw Diproses</p>
+                                    <p class="fs-30 mb-2">34040</p>
+                                    <p>Jumlah Keseluruhan Withdraw Diproses</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 stretch-card transparent">
+                            <div class="card card-light-danger">
+                                <div class="card-body">
+                                    <p class="mb-4">Jumlah Withdraw Sukses</p>
+                                    <p class="fs-30 mb-2">47033</p>
+                                    <p>Jumlah Keseluruhan withdraw sukses</p>
                                 </div>
                             </div>
                         </div>
@@ -30,73 +110,38 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card tale-bg">
-                        <div class="card-people mt-auto">
-                            <img src="images/dashboard/people.svg" alt="people">
-                            <div class="weather-info">
-                                <div class="d-flex">
-                                    <div>
-                                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
-                                    </div>
-                                    <div class="ml-2">
-                                        <h4 class="location font-weight-normal">Bangalore</h4>
-                                        <h6 class="font-weight-normal">India</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 grid-margin transparent">
+                <div class="col-md-12 grid-margin transparent">
+                    <h3>Data Keuangan</h3>
                     <div class="row">
-                        <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="col-md-6 mb-3 stretch-card transparent">
                             <div class="card card-tale">
                                 <div class="card-body">
-                                    <p class="mb-4">Today’s Bookings</p>
+                                    <p class="mb-4">Jumlah Total Keuangan</p>
                                     <p class="fs-30 mb-2">4006</p>
-                                    <p>10.00% (30 days)</p>
+                                    <p>Jumlah Mitra Yang Terdaftar</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="col-md-6 mb-3 stretch-card transparent">
                             <div class="card card-dark-blue">
                                 <div class="card-body">
-                                    <p class="mb-4">Total Bookings</p>
+                                    <p class="mb-4">Jumlah Keuntungan Penjualan Tiket</p>
                                     <p class="fs-30 mb-2">61344</p>
-                                    <p>22.00% (30 days)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                            <div class="card card-light-blue">
-                                <div class="card-body">
-                                    <p class="mb-4">Number of Meetings</p>
-                                    <p class="fs-30 mb-2">34040</p>
-                                    <p>2.00% (30 days)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 stretch-card transparent">
-                            <div class="card card-light-danger">
-                                <div class="card-body">
-                                    <p class="mb-4">Number of Clients</p>
-                                    <p class="fs-30 mb-2">47033</p>
-                                    <p>0.22% (30 days)</p>
+                                    <p>Jumlah keselruhan Withdraw Diajukan</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <p class="card-title">Order Details</p>
-                            <p class="font-weight-500">The total number of sessions within the date range. It is the period
+                            <p class="font-weight-500">The total number of sessions within the date range. It is the
+                                period
                                 time a user is actively engaged with your website, page or app, etc</p>
                             <div class="d-flex flex-wrap mb-5">
                                 <div class="mr-5 mt-3">
@@ -127,7 +172,8 @@
                                 <p class="card-title">Sales Report</p>
                                 <a href="#" class="text-info">View all</a>
                             </div>
-                            <p class="font-weight-500">The total number of sessions within the date range. It is the period
+                            <p class="font-weight-500">The total number of sessions within the date range. It is the
+                                period
                                 time a user is actively engaged with your website, page or app, etc</p>
                             <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
                             <canvas id="sales-chart"></canvas>
@@ -150,7 +196,8 @@
                                                     <h1 class="text-primary">$34040</h1>
                                                     <h3 class="font-weight-500 mb-xl-4 text-primary">North America</h3>
                                                     <p class="mb-2 mb-xl-0">The total number of sessions within the date
-                                                        range. It is the period time a user is actively engaged with your
+                                                        range. It is the period time a user is actively engaged with
+                                                        your
                                                         website, page or app, etc</p>
                                                 </div>
                                             </div>
@@ -261,8 +308,10 @@
                                                     <p class="card-title">Detailed Reports</p>
                                                     <h1 class="text-primary">$34040</h1>
                                                     <h3 class="font-weight-500 mb-xl-4 text-primary">North America</h3>
-                                                    <p class="mb-2 mb-xl-0">The total number of sessions within the date
-                                                        range. It is the period time a user is actively engaged with your
+                                                    <p class="mb-2 mb-xl-0">The total number of sessions within the
+                                                        date
+                                                        range. It is the period time a user is actively engaged with
+                                                        your
                                                         website, page or app, etc</p>
                                                 </div>
                                             </div>
@@ -540,49 +589,56 @@
                                         <tr>
                                             <td class="pl-0">Kentucky</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">65</span>(2.15%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">65</span>(2.15%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">65</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0">Ohio</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">54</span>(3.25%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">54</span>(3.25%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">51</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0">Nevada</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">22</span>(2.22%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">22</span>(2.22%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">32</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0">North Carolina</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">46</span>(3.27%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">46</span>(3.27%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">15</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0">Montana</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">17</span>(1.25%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">17</span>(1.25%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">25</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0">Nevada</td>
                                             <td>
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">52</span>(3.11%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">52</span>(3.11%)
+                                                </p>
                                             </td>
                                             <td class="text-muted">71</td>
                                         </tr>
                                         <tr>
                                             <td class="pl-0 pb-0">Louisiana</td>
                                             <td class="pb-0">
-                                                <p class="mb-0"><span class="font-weight-bold mr-2">25</span>(1.32%)</p>
+                                                <p class="mb-0"><span class="font-weight-bold mr-2">25</span>(1.32%)
+                                                </p>
                                             </td>
                                             <td class="pb-0">14</td>
                                         </tr>
@@ -654,7 +710,8 @@
                                     <div class="row">
                                         <div class="col-8 text-white">
                                             <h3>34040</h3>
-                                            <p class="text-white font-weight-500 mb-0">The total number of sessions within
+                                            <p class="text-white font-weight-500 mb-0">The total number of sessions
+                                                within
                                                 the date range.It is calculated as the sum . </p>
                                         </div>
                                         <div class="col-4 background-icon">
@@ -756,9 +813,12 @@
             </div>
         </div>
         <!-- content-wrapper ends -->
+<<<<<<< Updated upstream:resources/views/admin/dashboard.blade.php
 
         @include('admin.layout.footer')
 
+=======
+>>>>>>> Stashed changes:resources/views/pages/admin/dashboard.blade.php
     </div>
 @endsection
 @push('addon-script')

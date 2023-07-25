@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< Updated upstream
+=======
+Route::get('/coba', function () {
+    return view('pages.admin.dashboard');
+});
+>>>>>>> Stashed changes
 Route::get('/', function () {
     return view('welcome');
 });
