@@ -26,18 +26,25 @@
     <!-- SweetAlert  -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
-    @stack('scripts')
+    @stack('css')
 </head>
 
 <body>
     <div class="container-scroller">
-        @include('layouts.header')
+        @include('pages.admin.layouts.header')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
 
-            @include('layouts.sidebar')
+            @include('pages.admin.layouts.sidebar')
+            <div class="main-panel">
+                @yield('content')
+                @include('pages.admin.layouts.footer')
 
-            @yield('content')
+
+            </div>
+
+
+
 
             <!-- main-panel ends -->
         </div>

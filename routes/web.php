@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/coba', function () {
-    return view('pages.mitra.pages.account.setting');
+    return view('pages.admin.pages.admin.admin');
 });
 
 Route::get('/', function () {
@@ -43,7 +43,7 @@ Route::middleware(['auth', 'mitra'])->group(function () {
     Route::get('/mitra/dashboard', function () {
         return view('pages.mitra.dashboard');
     })->name('mitra.dashboard');
-    
+
     // Defining Route For CRUD Events
     Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');
     Route::post('/mitra/add/events', [EventController::class, 'post'])->name('events.post');
@@ -52,7 +52,6 @@ Route::middleware(['auth', 'mitra'])->group(function () {
 
     // Defining Route For Bank Account Mitra
     Route::get('/mitra/bank', [BankController::class, 'get'])->name('bank.get');
-    
 });
 
 Route::middleware('auth')->group(function () {
