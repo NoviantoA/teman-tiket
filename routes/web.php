@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/coba', function () {
-    return view('pages.admin.pages.withdraw.view');
+    return view('pages.mitra.pages.withdraw.rpwithdraw');
 });
 
 Route::get('/', function () {

@@ -248,7 +248,7 @@
             {{-- End Create --}}
 
 
-            <div class="row" style="width: 1100px;max-height: 400px;overflow-y:scroll;overflow-x:hidden">
+            <div class="row" style="width: 1300px;max-height: 400px;overflow-y:scroll;overflow-x:hidden">
 
                 {{-- events view --}}
 
