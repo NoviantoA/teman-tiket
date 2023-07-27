@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(user_seeders::class);
         $this->call(role_seeders::class);
         $this->call(event_seeders::class);
+        $this->call(bank_seeders::class);
     }
 }

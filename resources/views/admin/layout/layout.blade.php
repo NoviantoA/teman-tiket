@@ -32,19 +32,11 @@
 
 <body>
     <div class="container-scroller">
-<<<<<<< Updated upstream:resources/views/admin/layout/layout.blade.php
-        @include('admin.layout.header')
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-
-            @include('admin.layout.sidebar')
-=======
         @include('pages.admin.layouts.header')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
 
             @include('pages.admin.layouts.sidebar')
->>>>>>> Stashed changes:resources/views/pages/admin/layouts/app.blade.php
 
             @yield('content')
 

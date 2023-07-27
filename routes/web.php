@@ -52,6 +52,9 @@ Route::middleware(['auth', 'mitra'])->group(function () {
 
     // Defining Route For Bank Account Mitra
     Route::get('/mitra/bank', [BankController::class, 'get'])->name('bank.get');
+    Route::post('/mitra/bank/add', [BankController::class, 'post'])->name('bank.post');
+    Route::put('/mitra/bank/{id}/update', [BankController::class, 'update'])->name('bank.update');
+    Route::delete('/mitra/bank/{id}/delete', [BankController::class, 'delete'])->name('bank.delete');
     
 });
 

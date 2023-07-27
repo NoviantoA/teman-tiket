@@ -38,25 +38,13 @@
 
         {{-- Acount Bank  --}}
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#bank" aria-expanded="false"
-                aria-controls="form-elements">
+            <a class="nav-link" href="{{ route('bank.get') }}">
                 <i class="ti-credit-card mr-3"></i>
                 <span class="menu-title"> Account Bank</span>
-                <i class="menu-arrow"></i>
+                {{-- <i class="menu-arrow"></i> --}}
             </a>
-            <div class="collapse" id="bank">
-                <ul class="nav flex-column sub-menu">
-                    {{-- add Events  --}}
-                    <li class="nav-item"><a class="nav-link" href="{{ route('bank.get') }}">Add Account Bank</a>
-                    </li>
-                    {{-- edit update events  --}}
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Manage Bank
-                            Bank</a>
-                    </li>
-                </ul>
-            </div>
         </li>
-        {{-- // Transaksi Pembelian Tiket  --}}
+        {{-- Transaksi Pembelian Tiket --}}
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#transaksi" aria-expanded="false"
                 aria-controls="form-elements">
