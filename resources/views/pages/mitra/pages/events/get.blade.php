@@ -248,7 +248,7 @@
             {{-- End Create --}}
 
 
-            <div class="row" style="width: 1100px;max-height: 400px;overflow-y:scroll;overflow-x:hidden">
+            <div class="row" style="width: 1300px;max-height: 400px;overflow-y:scroll;overflow-x:hidden">
 
                 {{-- events view --}}
 
@@ -436,8 +436,10 @@
                     </div>
                     {{-- End Delete Modal --}}
                 @empty
-                    <div class="alert alert-danger" style="margin:20px 0px 0px 15px">
-                        Event Belum tersedia.
+                    <div class="container">
+                        <div class="alert alert-danger" style="margin:20px 0px 50px 0px; width:250px;">
+                            You haven't any events.
+                        </div>
                     </div>
                 @endforelse
 

@@ -12,8 +12,9 @@ use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
-        return view('admin.dashboard');
+    public function dashboard()
+    {
+        return view('pages.admin.dashboard');
     }
 
     public function login(Request $request)
@@ -137,14 +138,12 @@ class AdminController extends Controller
         return view('admin.settings.update-admin-details');
     }
 
-    public function updateVendorDetails($slug){
-        if($slug == 'personal'){
-
-        } else if($slug == 'business'){
-
-        } else if($slug == 'bank'){
-
+    public function updateVendorDetails($slug)
+    {
+        if ($slug == 'personal') {
+        } else if ($slug == 'business') {
+        } else if ($slug == 'bank') {
+        }
+        return view('admin.settings.update-vendor-details')->with(compact('slug'));
     }
-    return view('admin.settings.update-vendor-details')->with(compact('slug'));
-}
 }
