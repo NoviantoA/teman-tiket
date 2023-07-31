@@ -7,7 +7,9 @@
 
 <body>
     @yield('navbar')
+
     @yield('content')
+
     @include('pages.user.layouts.footer')
     @include('pages.user.layouts.script')
 </body>

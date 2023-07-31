@@ -19,6 +19,7 @@ class TicketController extends Controller
         
         $tickets = Tickets::leftJoin("events","events.event_id","=","tickets.event_id")
         ->whereRaw("user_id = ?",[$userID])
+        ->orderBy('tickets.ticket_id',"desc")
         ->get();
 
         return view(
@@ -36,6 +37,7 @@ class TicketController extends Controller
             'nameticket'=> 'required|string|regex:/^[a-zA-Z\\s+0-9]+$/u|nullable',
             'kuotaticket'=> 'required|string|regex:/^[0-9]+$/u|nullable',
         ]);
+
         // Convert string to int
         $event_id = (int)$request->event_name;
 

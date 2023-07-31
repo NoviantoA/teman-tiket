@@ -120,7 +120,8 @@
 
                         {{-- Ticket Data View --}}
                         <div class="body">
-                            <div class="table-responsive">
+                            <div class="table-responsive"
+                                style="width: 1120px;max-height: 400px;overflow-y:scroll;overflow-x:hidden">
                                 <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
                                     @if (count($tickets) == 0)
                                     @else
