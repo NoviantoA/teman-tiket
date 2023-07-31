@@ -8,8 +8,8 @@
 <body>
     @yield('navbar')
     @yield('content')
-    @includeIf('pages.user.layouts.footer')
-    @includeIf('pages.user.layouts.script')
+    @include('pages.user.layouts.footer')
+    @include('pages.user.layouts.script')
 </body>
 
 </html>

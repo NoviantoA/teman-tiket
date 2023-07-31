@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Tickets extends Model
+{
+    use HasFactory;
+    protected $table = 'tickets';
+    protected $primaryKey = 'ticket_id';
+    protected $fillable = [
+        'event_id',
+        "ticket_name",
+        "ticket_capacity",
+        "ticket_sold",
+    ];
+}

@@ -21,7 +21,6 @@ class user_seeders extends Seeder
           [
             'id' => 1,
             'role_id' => 1,
-            'event_id' => 0,
             'bank_id' => 0,
             'name' => 'Super Admin',
             'email' => 'admin@admin.com',
@@ -34,7 +33,6 @@ class user_seeders extends Seeder
           [
             'id' => 2,
             'role_id' => 2,
-            'event_id' => 0,
             'bank_id' => 0,
             'name' => 'Novianto Anggoro',
             'email' => 'novianto@gmail.com',
@@ -47,7 +45,6 @@ class user_seeders extends Seeder
           [
             'id' => 3,
             'role_id' => 2,
-            'event_id' => 0,
             'bank_id' => 0,
             'name' => 'Ahmad Yusuf Al Maruf',
             'email' => 'maruf@gmail.com',
@@ -60,7 +57,6 @@ class user_seeders extends Seeder
           [
             'id' => 4,
             'role_id' => 3,
-            'event_id' => 5,
             'bank_id' => 1,
             'name' => 'Dimas Mirza Alifansa',
             'email' => 'dimas@gmail.com',
@@ -73,7 +69,6 @@ class user_seeders extends Seeder
           [
             'id' => 5,
             'role_id' => 4,
-            'event_id' => 0,
             'bank_id' => 0,
             'name' => 'Firman Perdana',
             'email' => 'firman@gmail.com',

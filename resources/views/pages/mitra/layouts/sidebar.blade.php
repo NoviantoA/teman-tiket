@@ -18,22 +18,10 @@
         </li>
         {{-- Ticket Menu --}}
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ticket" aria-expanded="false"
-                aria-controls="form-elements">
+            <a class="nav-link" href="{{ route('ticket.get') }}" aria-controls="form-elements">
                 <i class="ti-ticket mr-3"></i>
                 <span class="menu-title"> Ticket</span>
-                <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ticket">
-                <ul class="nav flex-column sub-menu">
-                    {{-- add Events  --}}
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Add Ticket</a>
-                    </li>
-                    {{-- edit update events  --}}
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Manage Ticket</a>
-                    </li>
-                </ul>
-            </div>
         </li>
 
         {{-- Acount Bank  --}}

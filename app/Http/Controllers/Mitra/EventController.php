@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\Tickets;
 use Intervention\Image\Facades\Image;
 
 class EventController extends Controller
@@ -145,6 +146,9 @@ class EventController extends Controller
 
         // Delete it
         $event->delete();
+
+        // Delete Ticket related with Event
+        $ticket = Tickets::where("event_id","=",$id)->delete();
 
 
         //redirect to index

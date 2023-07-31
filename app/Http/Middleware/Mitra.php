@@ -28,7 +28,7 @@ class Mitra
                 return $next($request);
                 break;
             case 4:
-                return redirect('/dashboard');
+                return redirect('/');
                 break;
         }
     }
