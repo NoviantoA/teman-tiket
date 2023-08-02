@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -18,17 +18,18 @@ class Admin
     {
         switch (Auth::user()->role_id) {
             case 1:
-                return $next($request);
+                return redirect('/admin/dashboard');
                 break;
             case 2:
-                return $next($request);
+                return redirect('/admin/dashboard');
                 break;
             case 3:
                 return redirect('/mitra/dashboard');
                 break;
             case 4:
-                return redirect('/');
+                return $next($request);
                 break;
         }
+        
     }
 }

@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\BankController;
+use App\Http\Controllers\Mitra\TicketController;
+use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,20 +24,30 @@ Route::get('/coba', function () {
     return view('pages.mitra.pages.withdraw.rpwithdraw');
 });
 
-Route::get('/', function () {
-    return view('pages.user.pages.index');
-});
+
 
 
 // Dashboard After Login
-Route::get('/dashboard', function () {
-    return view('pages.user.dashboard');
-})->middleware(['auth'])->name('dashboard');
+
 Route::get('/admin/dashboard', function () {
     return view('pages.admin.dashboard');
 })->middleware(['auth', 'admin'])->name('admin.dashboard');
 
 
+// Defined Route for guest
+Route::group(['prefix' => ''], function(){
+    Route::get('/', [IndexController::class,"index"])->name('user.dashboard');
+    Route::get('/details/{id}', [IndexController::class,"details"])->name('user.details');
+    Route::get('/details', [IndexController::class,"detailAll"])->name('user.detailAll');
+    Route::post('/details', [IndexController::class,"buyTicket"])->name('user.details.post');
+});
+// End Defined Route for guest
+
+// Defined Route for User Previlege
+Route::middleware(["auth","user"])->group(function(){
+    // Route::get('/', [IndexController::class,"index"])->name('user.dashboard');
+});
+// End Defined Route for User Previlege
 
 
 // Defined Route for Mitra Previlege
@@ -49,14 +61,24 @@ Route::middleware(['auth', 'mitra'])->group(function () {
     Route::post('/mitra/add/events', [EventController::class, 'post'])->name('events.post');
     Route::put('/mitra/{id}/events', [EventController::class, 'update'])->name('events.update');
     Route::delete('/mitra/{id}/events', [EventController::class, 'delete'])->name('events.delete');
+    // End Defining Route For CRUD Events
+
+    // Defining Route For CRUD Tickets
+    Route::get('/mitra/tickets', [TicketController::class, 'get'])->name('ticket.get');
+    Route::post('/mitra/tickets', [TicketController::class, 'post'])->name('ticket.post');
+    Route::put('/mitra/tickets/{id}/update', [TicketController::class, 'update'])->name('ticket.update');
+    Route::delete('/mitra/tickets/{id}/update', [TicketController::class, 'delete'])->name('ticket.delete');
+    // End Defining Route For CRUD Tickets
 
     // Defining Route For Bank Account Mitra
     Route::get('/mitra/bank', [BankController::class, 'get'])->name('bank.get');
     Route::post('/mitra/bank/add', [BankController::class, 'post'])->name('bank.post');
     Route::put('/mitra/bank/{id}/update', [BankController::class, 'update'])->name('bank.update');
     Route::delete('/mitra/bank/{id}/delete', [BankController::class, 'delete'])->name('bank.delete');
-    
+    // End Defining Route For Bank Account Mitra
 });
+// End Defined Route for Mitra Previlege
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
