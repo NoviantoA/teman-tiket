@@ -9,11 +9,11 @@
                         <p class="card-description">
                             Semangat Cuan
                         </p>
-                        <form class="form-samples" action="{{ route('admin.add.mitra') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.edit.mitra', ['id' => $mitra->id]) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputName1">Nama Mitra</label>
-                                <input type="text" class="form-control" name="name" id="rekening" placeholder="Nama Mitra">
+                                <input type="text" class="form-control" name="name" id="rekening" value="{{ $mitra->name }}" placeholder="Nama Mitra">
                             </div>
                             {{-- <div class="form-group">
                                 <label for="exampleInputName1">Bank</label>
@@ -30,22 +30,27 @@
                             </div> --}}
                             <div class="form-group">
                                 <label for="exampleInputName1">Nomor Handphone</label>
-                                <input type="text" class="form-control" id="rekening" name="no_telp" value="+62"
+                                <input type="text" class="form-control" id="rekening" name="no_telp" value="{{ $mitra->no_telp }}"
                                     placeholder="Nomor Handphone Penangung Jawab">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Gmail Mitra</label>
-                                <input type="text" class="form-control" id="rekening" name="email" placeholder="Gmail Mitra">
+                                <input type="text" class="form-control" id="rekening" name="email" value="{{ $mitra->email }}" placeholder="Gmail Mitra">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Password Mitra</label>
-                                <input type="password" class="form-control" id="rekening" name="password" placeholder="Password Mitra">
+                                <input type="password" class="form-control" id="rekening" name="password" value="{{ $mitra->password }}" placeholder="Password Mitra">
                             </div>
                             {{-- <div class="form-group">
-                                <label for="exampleInputName1">Image</label>
-                                <input type="file" class="form-control" id="rekening" name="img_profile">
+                                <label for="img_profile">Upload Photo</label>
+                                <input type="file" name="img_profile" id="img_profile" class="form-control">
+                                @if ($mitra->img_profile)
+                                    <img src="{{ asset('store/user/photo/' . $mitra->img_profile) }}" width="280px" height="175px" alt="profile mitra">
+                                @else
+                                    <p>No image found</p>
+                                @endif
                             </div> --}}
-                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
                 </div>

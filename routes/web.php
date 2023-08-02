@@ -74,13 +74,24 @@ Route::prefix('/admin')->group(function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         // logout
         Route::get('logout', [AdminController::class, 'logout'])->name('admin.logout');
-        // update admin password
-        Route::match(['get', 'post'], 'update-admin-password', [AdminController::class, 'updateAdminPassword'])->name('update.admin.password');
-        // check admin password
-        Route::post('check-admin-password', [AdminController::class, 'checkAdminPassword'])->name('check.admin.password');
-        // update admin details
-        Route::match(['get', 'post'], 'update-admin-details', [AdminController::class, 'updateAdminDetails'])->name('update.admin.details');
-        // update vendor details
-        Route::match(['get', 'post'], 'update-vendor-details/{slug}', [AdminController::class, 'updateVendorDetails'])->name('update.vendor.details');
+        // manage mitra
+        Route::get('/mitra', [AdminController::class, 'manageMitra'])->name('admin.manage.mitra');
+        // tambah mitra
+        Route::match(['get', 'post'], '/add/mitra', [AdminController::class, 'addMitra'])->name('admin.add.mitra');
+        // edit mitra
+        Route::match(['get', 'post'], '/edit/mitra/{id}', [AdminController::class, 'editMitra'])->name('admin.edit.mitra');
+        // delete mitra
+        Route::match(['get', 'post'], '/delete/mitra/{id}', [AdminController::class, 'deleteMitra'])->name('admin.delete.mitra');
+        // manage admin
+        Route::get('/admin', [AdminController::class, 'manageAdmin'])->name('admin.manage.admin');
+        // tambah admin
+        Route::match(['get', 'post'], '/add/admin', [AdminController::class, 'addAdmin'])->name('admin.add.admin');
+        // edit admin
+        Route::match(['get', 'post'], '/edit/admin/{id}', [AdminController::class, 'editAdmin'])->name('admin.edit.admin');
+        // delete admin
+        Route::match(['get', 'post'], '/delete/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete.admin');
+        // admin manage event
+         // Admin Dashboard
+         Route::get('event', [AdminController::class, 'manageEvent'])->name('admin.event');
     });
 });
