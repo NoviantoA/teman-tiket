@@ -53,7 +53,7 @@
             </a>
             <div class="collapse" id="form-elements">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Manage Events</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.event') }}">Manage Events</a>
                     </li>
                 </ul>
             </div>
@@ -66,8 +66,8 @@
             </a>
             <div class="collapse" id="charts">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Tambah Mitra</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Manage Mitra</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.add.mitra') }}">Tambah Mitra</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.mitra') }}">Manage Mitra</a></li>
                 </ul>
             </div>
         </li>
@@ -117,9 +117,9 @@
             </a>
             <div class="collapse" id="admin">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> Add Admin </a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.add.admin') }}"> Add Admin </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> Manage Admin </a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.admin') }}"> Manage Admin </a>
                     </li>
                 </ul>
             </div>
