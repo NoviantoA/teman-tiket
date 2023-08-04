@@ -5,6 +5,7 @@ use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\TicketController;
 use App\Http\Controllers\User\IndexController;
+use App\Http\Controllers\User\TicketTransactionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,7 +36,7 @@ Route::get('/admin/dashboard', function () {
 
 
 // Defined Route for guest
-Route::group(['prefix' => ''], function(){
+Route::middleware("guest")->group(function(){
     Route::get('/', [IndexController::class,"index"])->name('user.dashboard');
     Route::get('/details/{id}', [IndexController::class,"details"])->name('user.details');
     Route::get('/details', [IndexController::class,"detailAll"])->name('user.detailAll');
@@ -45,7 +46,10 @@ Route::group(['prefix' => ''], function(){
 
 // Defined Route for User Previlege
 Route::middleware(["auth","user"])->group(function(){
-    // Route::get('/', [IndexController::class,"index"])->name('user.dashboard');
+    Route::get('/transactions', [TicketTransactionController::class,"index"]);
+    Route::post('/transactions', [TicketTransactionController::class,"checkoutHandler"])->name('user.checkoutHandler');
+    
+    Route::get('/payments', [TicketTransactionController::class,"indexPayment"])->name('user.payment');
 });
 // End Defined Route for User Previlege
 

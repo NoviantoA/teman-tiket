@@ -56,16 +56,125 @@
             )
         </script>
     @endif
+    @if ($message = Session::get('transaction_validate_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('email_transaction_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('name_transaction_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('phone_transaction_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('bdate_transaction_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('gender_transaction_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
     {{-- End Error Handler from controller --}}
 
-    <script>
-        $(document).ready(function() {
-            $("#ticket_count").on('change keyup', function() {
-                const person = $("#ticket_count").val();
-                const price = $("#event_price").val();
-                const total = "Rp. " + person * price
-                $("#total_ticket").html(total);
+    {{-- Is Logged In --}}
+    @if (Auth::user())
+        {{-- own script --}}
+        <script>
+            $(document).ready(function() {
+                $("#ticket_count").on('change keyup', function() {
+                    const person = $("#ticket_count").val();
+                    const price = $("#event_price").val();
+                    const total = "Rp. " + person * price
+                    $("#total_ticket").html(total);
+                });
+                for (let i = 1; i < 4; i++) {
+                    $(`#check_user_${i}`).on("click", function() {
+                        if ($(`#check_user_${i}`).is(":checked")) {
+                            $(`#input_email_${i}`).val("{{ Auth::user()->email }}")
+                            $(`#input_name_${i}`).val("{{ Auth::user()->name }}")
+                            $(`#input_phone_${i}`).val("{{ Auth::user()->no_telp }}")
+                            $(`#input_address_${i}`).val("{{ Auth::user()->address }}")
+                            $(`#input_date_${i}`).val(
+                                "{{ substr(Auth::user()->born_date, 0, 10) }}"
+                            )
+                            $(`#input_gender_${i}`).html(
+                                "<option value={{ Auth::user()->gender }} selected>{{ Auth::user()->gender }}</option>"
+                            );
+                        } else {
+                            $(`#input_email_${i}`).val("")
+                            $(`#input_name_${i}`).val("")
+                            $(`#input_phone_${i}`).val("")
+                            $(`#input_date_${i}`).val("")
+                            $(`#input_address_${i}`).val("")
+                            $(`#input_gender_${i}`).html(
+                                `<option class="text-muted" hidden selected value="">---
+                                                            Gender ----
+                                                        </option>`
+                            )
+                        }
+                    });
+                }
+
+
             });
-        });
-    </script>
+            // Check User trigger button
+
+            // // Check User trigger button
+        </script>
+        {{-- end own script --}}
+    @else
+        {{-- own script --}}
+        <script>
+            $(document).ready(function() {
+                $("#ticket_count").on('change keyup', function() {
+                    const person = $("#ticket_count").val();
+                    const price = $("#event_price").val();
+                    const total = "Rp. " + person * price
+                    $("#total_ticket").html(total);
+                });
+            });
+        </script>
+        {{-- end own script --}}
+    @endif
+    {{-- End Is Logged In --}}
+
+
+
+
     @stack('script')

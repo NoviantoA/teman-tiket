@@ -58,7 +58,6 @@ class Kernel extends HttpKernel
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'precognitive' => \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
@@ -67,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'mitra' => \App\Http\Middleware\Mitra::class,
         'user' => \App\Http\Middleware\User::class,
+        'guest' => \App\Http\Middleware\Guest::class,
     ];
 }

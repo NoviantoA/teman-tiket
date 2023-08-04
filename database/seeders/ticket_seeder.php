@@ -20,9 +20,9 @@ class ticket_seeder extends Seeder
             $new_arr = [
                 "ticket_id" => $i,
                 "event_id" => $i,
-                "ticket_name" => "Ticket - $i",
-                "ticket_capacity" => $i,
-                "ticket_sold" => $i,
+                "ticket_name" => "Ticket Webinar $i",
+                "ticket_capacity" => rand(51,233),
+                "ticket_sold" => rand(1,65),
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ];
