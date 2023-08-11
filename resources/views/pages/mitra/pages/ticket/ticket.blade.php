@@ -357,7 +357,7 @@
             @if ($message = Session::get('create_ticket_fail'))
                 <script>
                     Swal.fire(
-                        'Good job!',
+                        'Oops...',
                         '{{ $message }}',
                         'error'
                     )

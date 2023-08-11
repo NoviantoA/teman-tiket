@@ -5,9 +5,19 @@
 @push('css')
     <link href="{{ asset('user/style/styleku.css') }}" rel="stylesheet" />
 @endpush
-@section('navbar')
-    @include('pages.user.layouts.navbarlogin')
-@endsection
+
+{{-- Is Logged In --}}
+@if (Auth::user())
+    @section('navbar')
+        @include('pages.user.layouts.navbarlogin')
+    @endsection
+@else
+    @section('navbar')
+        @include('pages.user.layouts.navbar')
+    @endsection
+@endif
+{{-- End Is Logged In --}}
+
 @section('content')
     <div class="page-content page-home">
         <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">

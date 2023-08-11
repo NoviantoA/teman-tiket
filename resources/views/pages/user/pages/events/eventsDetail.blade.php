@@ -69,9 +69,6 @@
                                 </div>
                             @else
                                 <div class="col-lg-4 card shadow p-10 sticky-right" data-aos="zoom-in">
-
-
-
                                     <p class="text-center mt-2">Available Ticket</p>
                                     <div class="card shadow p-2 mb-4">
                                         <div class="container">
@@ -81,7 +78,6 @@
                                                     <p class=" ml-3  text-orange" style="margin-top: -15px; color: orange;">
                                                         Rp.
                                                         {{ $event->event_price }}</p>
-
                                                 </div>
                                                 <div class="col-md-5 text-center">
                                                     @if ($event->ticket_capacity - $event->ticket_sold == 0)
@@ -112,6 +108,10 @@
                                                                 style="width:150px;" min="0" max="3">
                                                             <input type="text" name="event_price" id="event_price"
                                                                 value="{{ $event->event_price }}" hidden>
+                                                            <input type="text" name="ticket_id" id="ticket_id"
+                                                                value="{{ $event->ticket_id }}" hidden>
+                                                            <input type="text" name="event_id" id="event_id"
+                                                                value="{{ $event->event_id }}" hidden>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <p class="mt-2 ml-3 text danger">Total</p>
