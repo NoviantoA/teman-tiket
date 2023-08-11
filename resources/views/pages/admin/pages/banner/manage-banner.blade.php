@@ -18,29 +18,37 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="header">
-                            <h3>User Controll</h3>
-                            <p>Data User</p>
+                            <h3>Data Banner</h3>
+                            <p>Data - Data Banner</p>
                         </div>
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
+                                <table class="table table-bordered table-striped table-hover js-exportable"
+                                   >
                                     <thead>
                                         <tr>
-                                            <th style="width: 5%">No</th>
-                                            <th>Nama Mitra </th>
-                                            <th>Nomor Telephon</th>
-                                            <th>Gmail</th>
+                                            <th width="5%">No</th>
+                                            <th width="25%">Nama Banner</th>
+                                            <th>Image</th>
+                                            <th width="100px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no=1; ?>
-                                        @foreach($mitra as $data)
+                                        @foreach($bannerData as $data)
                                         <tr>
-                                          <td>{{ $no++ }}</td>
-                                          <td>{{ $data->name }}</td>
-                                          <td>{{ $data->no_telp }}</td>
-                                          <td>{{ $data->email }}</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->banner_name }}</td>
+                                            <td>
+                                                    <img src="{{ url('store/admin/banner/' . $data->banner_image) }}" width="250px" alt="logo">
+                                            </td>
+                                            {{-- <td>5</td> --}}
+                                            <td class="text-center">
+                                                <a href="{{ route('admin.update.banner', ['banner_id' => $data->banner_id]) }}"  class="btn btn-warning me-2">Edit</a>
+                                                <button type="submit" class="btn btn-danger me-2" data-toggle="modal"
+                                                data-target="#delete{{ $data->banner_id }}">Hapus</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -56,6 +64,30 @@
     </div>
     <!-- content-wrapper ends -->
     {{-- @include('admin.layout.footer') --}}
+    @foreach ($bannerData as $data)
+    <div class="modal fade" id="delete{{ $data->banner_id }}">
+        <div class="modal-dialog">
+            <div class="modal-content bg-danger">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ $data->banner_name }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda Ingin Menghapus Data Ini?&hellip;</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <a href="{{ route('admin.delete.banner', ['banner_id' => $data->banner_id]) }}" type="button"
+                        class="btn btn-outline-light">Yes</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+@endforeach
 @endsection
 @push('scripts')
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>

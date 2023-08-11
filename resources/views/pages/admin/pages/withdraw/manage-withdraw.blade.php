@@ -18,61 +18,47 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="header">
-                            <h3>Data Event</h3>
-                            <p>Data - Data Event</p>
+                            <h3>Withdraw Controll</h3>
+                            <p>Data User</p>
                         </div>
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable"
-                                   >
+                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama event</th>
-                                            <th>Penanggung Jawab</th>
-                                            <th>Tanggal Event</th>
-                                            <th>Location</th>
-                                            <th>City</th>
-                                            <th>poster</th>
-                                            <th>Deskripsi</th>
-                                            <th>Tag</th>
-                                            <th>Jenis Tiket</th>
-                                            <th>Jumlah Tiket</th>
-                                            {{-- <th>Talent</th> --}}
-                                            <th width="50px">Action</th>
+                                            <th style="width: 5%">No</th>
+                                            <th>Mitra </th>
+                                            <th>Nominal</th>
+                                            <th>Bank</th>
+                                            <th>Rekening</th>
+                                            <th>Nama Pemilik Rekening</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no=1; ?>
-                                        @foreach($event as $data)
+                                        @foreach($withdraws as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $data->event_name }}</td>
-                                            <td>{{ $data->user->name }}</td>
-                                            <td>{{ $data->event_date }}</td>
-                                            <td>{{ $data->event_location }}</td>
-                                            <td>{{ $data->event_city }}</td>
+                                            <td>{{ $data->bank->user->name }}</td>
+                                            <td>{{ $data->nominal }}</td>
+                                            <td>{{ $data->bank->bank_name }}</td>
+                                            <td>{{ $data->bank->bank_nomer_rekening }}</td>
+                                            <td>{{ $data->bank->bank_name_user }}</td>
+                                            <td>{{ $data->status }}</td>
                                             <td>
-                                                <div class="brand-logo">
-                                                    <img src="{{ url('store/mitra/events/' . $data->event_poster) }}" width="250px" alt="logo">
-                                                  </div>
-                                            </td>
-                                            <td>{{ $data->event_description }}</td>
-                                            <td>{{ $data->event_tag }}</td>
-                                            <td>{{ $data->ticket->ticket_name }}</td>
-                                            <td>{{ $data->ticket->ticket_capacity }}</td>
-                                            {{-- <td>5</td> --}}
-                                            <td class="text-center">
-                                                <form method="POST" action="{{ route('admin.update.event', ['event_id' => $data->event_id]) }}">
+                                                <form method="POST" action="{{ route('admin.update.withdraw', ['withdraw_id' => $data->withdraw_id]) }}">
                                                     @csrf
                                                     @method('PUT') <!-- Add the method field -->
-                                                    <select class="form-control" name="event[{{ $data->event_id }}]" onchange="handleSelectChange(this, {{ $data->event_id }})">
-                                                        <option value="deactive" @if($data->event_status === 'deactive') selected="selected" @endif>Deactive</option>
-                                                        <option value="active" @if($data->event_status === 'active') selected="selected" @endif>Active</option>
+                                                    <select class="form-control" name="withdraw[{{ $data->withdraw_id }}]" onchange="handleSelectChange(this, {{ $data->withdraw_id }})">
+                                                        <option value="diajukan" @if($data->status === 'diajukan') selected="selected" @endif>Diajukan</option>
+                                                        <option value="proses" @if($data->status === 'proses') selected="selected" @endif>Proses</option>
+                                                        <option value="sukses" @if($data->status === 'sukses') selected="selected" @endif>Sukses</option>
                                                     </select>
                                                 </form>
-                                            </td>
+                                            </td>                                                                                    
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -88,24 +74,24 @@
     </div>
     <!-- content-wrapper ends -->
     {{-- @include('admin.layout.footer') --}}
-    @foreach ($event as $data)
-    <div class="modal fade" id="update{{ $data->event_id }}">
+    @foreach ($withdraws as $data)
+    <div class="modal fade" id="update{{ $data->withdraw_id }}">
         <div class="modal-dialog">
             <div class="modal-content bg-primary">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ $data->event_name }}</h4>
+                    <h4 class="modal-title">{{ $data->bank->user->name}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah Anda Ingin Mengubah Status {{ $data->event_status }} dari {{ $data->event_name }} menjadi  <span id="selectedStatus{{ $data->event_id }}"></span>?</p>
+                    <p>Apakah Anda Ingin Mengubah Status Withdraw {{ $data->status }} dari {{ $data->bank->user->name}} menjadi  <span id="selectedStatus{{ $data->withdraw_id }}"></span>?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <!-- Remove the link, as we will submit the form programmatically -->
                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
                     <!-- Add an ID to the submit button -->
-                    <button id="submitBtn{{ $data->event_id }}" type="button" class="btn btn-outline-light" onclick="updateStatus({{ $data->event_id }})">Yes</button>
+                    <button id="submitBtn{{ $data->withdraw_id }}" type="button" class="btn btn-outline-light" onclick="updateStatus({{ $data->withdraw_id }})">Yes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -114,23 +100,23 @@
     </div>
     @endforeach
     <script>
-        function handleSelectChange(selectElement, eventId) {
+        function handleSelectChange(selectElement, withdrawId) {
             var selectedOption = selectElement.value;
             // Show modal by ID
-            $('#update' + eventId).modal('show');
+            $('#update' + withdrawId).modal('show');
 
             // Set the selected option text in the modal
             var selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
-            $('#selectedStatus' + eventId).text(selectedOptionText);
+            $('#selectedStatus' + withdrawId).text(selectedOptionText);
         }
 
-        function updateStatus(eventId) {
-            var selectedOption = $('select[name="event[' + eventId + ']"]').val();
+        function updateStatus(withdrawId) {
+            var selectedOption = $('select[name="withdraw[' + withdrawId + ']"]').val();
             var formData = new FormData();
             formData.append('_method', 'PUT'); // Add the method field
-            formData.append('event[' + eventId + ']', selectedOption);
+            formData.append('withdraw[' + withdrawId + ']', selectedOption);
 
-            fetch("{{ url('admin/update/event') }}" + '/' + eventId, {
+            fetch("{{ url('admin/update/withdraw') }}" + '/' + withdrawId, {
                 method: 'POST',
                 body: formData,
                 headers: {

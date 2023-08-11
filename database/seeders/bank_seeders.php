@@ -28,6 +28,30 @@ class bank_seeders extends Seeder
               'created_at'=>Carbon::now(),
               'updated_at'=>Carbon::now()
             ],
+            [
+              'bank_id' => 2,
+              'user_id' => 6,
+              'bank_type' => "Bank",
+              'bank_nomer_hp' => null,
+              'bank_nomer_rekening' => "9837498237987",
+              'bank_name' => "Bank Mandiri",
+              'bank_name_user' => "Noviantika Anggraini",
+              'bank_is_verified' => 0,
+              'created_at'=>Carbon::now(),
+              'updated_at'=>Carbon::now()
+            ],
+            [
+              'bank_id' => 3,
+              'user_id' => 6,
+              'bank_type' => "Bank",
+              'bank_nomer_hp' => null,
+              'bank_nomer_rekening' => "98648197241",
+              'bank_name' => "Bank Syariah",
+              'bank_name_user' => "Noviantika Anggraini",
+              'bank_is_verified' => 0,
+              'created_at'=>Carbon::now(),
+              'updated_at'=>Carbon::now()
+            ],
             ];
             Banks::insert($bankRecords);
     }

@@ -28,19 +28,28 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 5%">No</th>
-                                            <th>Nama Mitra </th>
-                                            <th>Nomor Telephon</th>
+                                            <th>Nama </th>
                                             <th>Gmail</th>
+                                            {{-- <th>Pasword</th> --}}
+                                            <th>telp</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no=1; ?>
-                                        @foreach($mitra as $data)
+                                        @foreach($user as $data)
                                         <tr>
-                                          <td>{{ $no++ }}</td>
-                                          <td>{{ $data->name }}</td>
-                                          <td>{{ $data->no_telp }}</td>
-                                          <td>{{ $data->email }}</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->name }}</td>
+                                            <td>{{ $data->email }}</td>
+                                            {{-- <td>{{ $data->password }}</td> --}}
+                                            <td>{{ $data->no_telp }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.edit.user', ['id' => $data->id]) }}"  class="btn btn-warning me-2">Edit</a>
+                                                <button type="submit" class="btn btn-danger me-2" data-toggle="modal"
+                                                data-target="#delete{{ $data->id }}">Hapus</button>
+                                                <button type="submit" class="btn btn-primary me-2">deactive</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -56,6 +65,30 @@
     </div>
     <!-- content-wrapper ends -->
     {{-- @include('admin.layout.footer') --}}
+    @foreach ($user as $data)
+    <div class="modal fade" id="delete{{ $data->id }}">
+        <div class="modal-dialog">
+            <div class="modal-content bg-danger">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ $data->name }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda Ingin Menghapus Data Ini?&hellip;</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <a href="{{ route('admin.delete.user', ['id' => $data->id]) }}" type="button"
+                        class="btn btn-outline-light">Yes</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+@endforeach
 @endsection
 @push('scripts')
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>

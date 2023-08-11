@@ -53,7 +53,7 @@
             </a>
             <div class="collapse" id="form-elements">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.event') }}">Manage Events</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.manage.event') }}">Manage Events</a>
                     </li>
                 </ul>
             </div>
@@ -79,7 +79,7 @@
             </a>
             <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Manage Ticket</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.ticket') }}">Manage Ticket</a>
                     </li>
                 </ul>
             </div>
@@ -92,8 +92,23 @@
             </a>
             <div class="collapse" id="icons">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Add Diskon</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Manage Diskon</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.add.discount') }}">Add Diskon</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.discount') }}">Manage Diskon</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#admin" aria-expanded="false" aria-controls="error">
+                <i class="ti-image mr-3"></i>
+                <span class="menu-title">Banner</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="admin">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.add.banner') }}"> Add Banner </a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.banner') }}"> Manage Banner </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -105,7 +120,7 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Manage User </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.user') }}"> Manage User </a></li>
                 </ul>
             </div>
         </li>
@@ -133,7 +148,7 @@
             <div class="collapse" id="error">
                 <ul class="nav flex-column sub-menu">
 
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> Manage Withdraw
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.withdraw') }}"> Manage Withdraw
                         </a>
                     </li>
                 </ul>
@@ -149,18 +164,18 @@
             </a>
             <div class="collapse" id="reports">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html">Reports Event</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.report.event') }}">Reports Event</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">Reports User
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.report.user') }}">Reports User
                         </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">Reports Mitra
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.report.mitra') }}">Reports Mitra
                         </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">Reports Ticket
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.report.ticket') }}">Reports Ticket
                         </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html">Reports Withdraw
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.report.withdraw') }}">Reports Withdraw
                         </a>
                     </li>
                 </ul>
@@ -175,7 +190,7 @@
             </a>
             <div class="collapse" id="transaksi">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html">Manage
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('admin.manage.transaksi') }}">Manage
                             Transaksi</a>
                     </li>
                 </ul>

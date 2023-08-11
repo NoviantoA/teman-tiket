@@ -1,6 +1,20 @@
 @push('css')
-    <link rel="stylesheet" href="{{ asset('admin/vendors/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/vendors/select2-bootstrap-theme/select2-bootstrap.min.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('all/vendors/jquery-datatable/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
+
+
+{{-- Bootstrap CSS --}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{-- END Bootstrap CSS --}}
+
+{{-- Bootstrap Icon --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{{-- End Bootstrap Icon --}}
 @endpush
 @extends('pages.mitra.layouts.app')
 @section('content')
@@ -59,23 +73,23 @@
                             <p class="card-description">
                                 Gass cairkan pendapatan penjualan tiket anda
                             </p>
-                            <form class="forms-sample">
+                            <form class="forms-sample" action="{{ route('withdraw.add') }}" method="post">
+                                @csrf
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect2">Pilih Rekening</label>
-                                    <select class="form-control" id="exampleFormControlSelect2">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <label for="exampleInputName1">Pilih Rekening</label>
+                                    <select name="bank_id" id="bank_id" class="form-control js-example-basic-single">
+                                        <option value="" selected="selected">--- Pilih Rekening Bank---</option>
+                                        @foreach ($bankData as $data)
+                                            <option value="{{ $data->bank_id }}">{{ $data->bank_name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputName1">Jumlah Penarikan</label>
-                                    <input type="number" class="form-control" id="rekening" placeholder="rekening">
+                                    <input type="number" name="nominal" class="form-control" id="rekening" placeholder="rekening">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            </form>
+                            </form>                            
                         </div>
                     </div>
                 </div>
@@ -86,6 +100,30 @@
 
         @include('pages.mitra.layouts.footer')
         @push('scripts')
+
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    html: '{{ $error }}'
+                });
+            </script>
+        @endforeach
+        @endif
             <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
             <script src="{{ asset('admin/vendors/select2/select2.min.js') }}"></script>
             <script src="{{ asset('admin/js/select2.js') }}"></script>

@@ -23,6 +23,7 @@ class ticket_seeder extends Seeder
                 "ticket_name" => "Ticket - $i",
                 "ticket_capacity" => $i,
                 "ticket_sold" => $i,
+                "ticket_status" => 'deactive',
                 'created_at'=>Carbon::now(),
                 'updated_at'=>Carbon::now()
             ];

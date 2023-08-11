@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\TicketController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +77,11 @@ Route::middleware(['auth', 'mitra'])->group(function () {
     Route::put('/mitra/bank/{id}/update', [BankController::class, 'update'])->name('bank.update');
     Route::delete('/mitra/bank/{id}/delete', [BankController::class, 'delete'])->name('bank.delete');
     // End Defining Route For Bank Account Mitra
+
+    // manage withdraw
+    Route::get('withdraw', [MitraController::class, 'manageWithdraw'])->name('withdraw.get');
+    // update withdraw
+    Route::match(['get', 'post'], '/withdraw/add', [MitraController::class, 'addWithdraw'])->name('withdraw.add');
 });
 // End Defined Route for Mitra Previlege
 
@@ -101,7 +107,12 @@ Route::prefix('/admin')->group(function () {
         // tambah mitra
         Route::match(['get', 'post'], '/add/mitra', [AdminController::class, 'addMitra'])->name('admin.add.mitra');
         // edit mitra
-        Route::match(['get', 'post'], '/edit/mitra/{id}', [AdminController::class, 'editMitra'])->name('admin.edit.mitra');
+        Route::match(
+            ['get', 'post'],
+            '/edit/mitra/{id}',
+            [AdminController::class, 'updateMitra'
+            ]
+        )->name('admin.edit.mitra');
         // delete mitra
         Route::match(['get', 'post'], '/delete/mitra/{id}', [AdminController::class, 'deleteMitra'])->name('admin.delete.mitra');
         // manage admin
@@ -109,11 +120,86 @@ Route::prefix('/admin')->group(function () {
         // tambah admin
         Route::match(['get', 'post'], '/add/admin', [AdminController::class, 'addAdmin'])->name('admin.add.admin');
         // edit admin
-        Route::match(['get', 'post'], '/edit/admin/{id}', [AdminController::class, 'editAdmin'])->name('admin.edit.admin');
+        Route::match(
+            ['get', 'post'],
+            '/edit/admin/{id}',
+            [AdminController::class, 'updateAdmin'
+            ]
+        )->name('admin.edit.admin');
         // delete admin
         Route::match(['get', 'post'], '/delete/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete.admin');
         // admin manage event
-         // Admin Dashboard
-         Route::get('event', [AdminController::class, 'manageEvent'])->name('admin.event');
+        Route::get('event', [AdminController::class, 'manageEvent'])->name('admin.manage.event');
+        // update event
+        Route::match([
+            'get', 'post', 'put'
+        ], '/update/event/{event_id}', [AdminController::class, 'updateEvent'])->name('admin.update.event');
+        // delete event
+        Route::match(['get', 'post'],
+            '/delete/event/{event_id}',
+            [AdminController::class, 'deleteEvent']
+        )->name('admin.delete.event');
+        // admin manage ticket
+        Route::get('ticket', [AdminController::class, 'manageTicket'])->name('admin.manage.ticket');
+        // update ticket
+        Route::match([
+            'get', 'post', 'put'
+        ], '/update/ticket/{ticket_id}', [AdminController::class, 'updateTicket'])->name('admin.update.ticket');
+        // delete ticket
+        Route::match(['get', 'post'],
+            '/delete/ticket/{ticket_id}',
+            [AdminController::class, 'deleteTicket']
+        )->name('admin.delete.ticket');
+        // admin manage discount
+        Route::get('discount', [AdminController::class, 'manageDiscount'])->name('admin.discount');
+        // admin tambah discount
+        Route::match(
+            ['get', 'post'],
+            '/add/discount',
+            [AdminController::class, 'addDiscount'
+            ]
+        )->name('admin.add.discount');
+        // admin manage user
+        Route::get('user', [AdminController::class, 'manageUser'])->name('admin.manage.user');
+        // edit user
+        Route::match(['get', 'post'],
+            '/edit/user/{id}',
+            [AdminController::class, 'updateUser']
+        )->name('admin.edit.user');
+        // delete user
+        Route::match(
+            ['get', 'post'],
+            '/delete/user/{id}',
+            [AdminController::class, 'deleteUser'
+            ]
+        )->name('admin.delete.user');
+        // admin manage withdraw
+        Route::get('withdraw', [AdminController::class, 'manageWithdraw'])->name('admin.manage.withdraw');
+        // update withdraw
+        Route::match([
+            'get', 'post', 'put'
+        ], '/update/withdraw/{withdraw_id}', [AdminController::class, 'updateWithdraw'])->name('admin.update.withdraw');
+        // admin manage reports
+        Route::get('report-event', [AdminController::class, 'reportEvent'])->name('admin.report.event');
+        Route::get('report-user', [AdminController::class, 'reportUser'])->name('admin.report.user');
+        Route::get('report-mitra', [AdminController::class, 'reportMitra'])->name('admin.report.mitra');
+        Route::get(
+            'report-ticket',
+            [AdminController::class, 'reportTicket'
+            ]
+        )->name('admin.report.ticket');
+        Route::get('report-withdraw',
+            [AdminController::class, 'reportWithdraw']
+        )->name('admin.report.withdraw');
+        // admin manage transaksi
+        Route::get('transaksi', [AdminController::class, 'reportTransaksi'])->name('admin.manage.transaksi');
+        // manage banner
+        Route::get('banner', [AdminController::class, 'manageBanner'])->name('admin.manage.banner');
+        // add banner
+        Route::match(['get', 'post'], '/add/banner', [AdminController::class, 'addBanner'])->name('admin.add.banner');
+        // update banner
+        Route::match(['get', 'post', 'put'], '/update/banner/{banner_id}', [AdminController::class, 'updateBanner'])->name('admin.update.banner');
+        // delete banner
+        Route::match(['get', 'post'], '/delete/banner/{banner_id}', [AdminController::class, 'deleteBanner'])->name('admin.delete.banner');
     });
 });

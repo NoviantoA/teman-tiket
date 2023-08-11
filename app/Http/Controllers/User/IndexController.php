@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banners;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
@@ -14,16 +15,18 @@ class IndexController extends Controller
     //For User
     function index(){
         // Get Events
-        $carousel = Events::orderBy('event_id',"desc")->take(3)->get();
+        // $carousel = Events::orderBy('event_id',"desc")->take(3)->get();
         $eventShow = Events::orderBy('event_id',"desc")->take(8)->get();
 
+        $bannerData = Banners::all();
         // dd($eventShow);
 
         return view(
             'pages.user.pages.index',
             compact(
-                "carousel",
-                "eventShow"
+                // "carousel",
+                "eventShow",
+                "bannerData",
             ),
         );
     }

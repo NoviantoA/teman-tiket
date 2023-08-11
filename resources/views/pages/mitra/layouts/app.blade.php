@@ -44,26 +44,17 @@
     <!-- container-scroller -->
 
 
-    @if (Session::has('success_message'))
+    @if (Session::has('success_message_withdraw'))
         <script>
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer);
-                    toast.addEventListener('mouseleave', Swal.resumeTimer);
-                }
-            });
-
-            Toast.fire({
+            Swal.fire({
                 icon: 'success',
-                title: '{{ Session::get('success_message') }}'
+                title: 'Berhasil',
+                text: "{{ Session::get('success_message_withdraw') }}",
+                showConfirmButton: false,
+                timer: 3000 // milliseconds
             });
-        </script>
-    @endif
+            </script>
+        @endif
 
     <!-- plugins:js -->
     <script src="{{ url('admin/vendors/js/vendor.bundle.base.js') }}"></script>
