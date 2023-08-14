@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('ticket_id');
             $table->foreignId('event_id');
             $table->string('ticket_name');
-            $table->string('ticket_capacity');
+            $table->integer('ticket_capacity');
             $table->integer('ticket_sold');
             $table->timestamps();
         });

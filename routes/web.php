@@ -6,6 +6,8 @@ use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\TicketController;
 use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\User\TicketTransactionController;
+use App\Http\Controllers\User\HistoryController;
+use App\Http\Controllers\User\InvoiceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,10 +48,20 @@ Route::middleware("guest")->group(function(){
 
 // Defined Route for User Previlege
 Route::middleware(["auth","user"])->group(function(){
+    // Transactions
     Route::get('/transactions', [TicketTransactionController::class,"index"]);
     Route::post('/transactions', [TicketTransactionController::class,"checkoutHandler"])->name('user.checkoutHandler');
-    
-    Route::get('/payments', [TicketTransactionController::class,"indexPayment"])->name('user.payment');
+    Route::get('/transactions/payments', [TicketTransactionController::class,"indexPayment"])->name('user.payment');
+    // End Transactions
+
+    // Histories
+    Route::get('/history', [HistoryController::class,"index"])->name("index.history");
+    // End Histories
+
+    // Invoice
+    Route::get('/invoice/{id}', [InvoiceController::class,"index"])->name("index.invoice");
+    // End Invoice
+
 });
 // End Defined Route for User Previlege
 

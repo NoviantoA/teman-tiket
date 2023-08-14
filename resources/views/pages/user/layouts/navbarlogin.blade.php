@@ -21,7 +21,7 @@
                         <a class="nav-link" href="/categories.html">Tickets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Transaction</a>
+                        <a class="nav-link" href="{{ route('index.history') }}">Histories</a>
                     </li>
                 </ul>
                 <!-- Desktop Menu -->
@@ -37,6 +37,8 @@
                             <p class="dropdown-item">
                                 {{ Auth::user()->name }}
                             </p>
+                            <a class="dropdown-item" href="#"><i class="bi bi-heart me-2"></i>Wishlist
+                            </a>
                             <a class="dropdown-item" href="/dashboard-account.html"><i
                                     class="bi bi-gear me-2"></i>Settings</a>
                             <div class="dropdown-divider"></div>

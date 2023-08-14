@@ -126,8 +126,6 @@ class TicketTransactionController extends Controller
             ]);
             
             // Insert into ticket user table
-           
-
             for ($i=1; $i < (int) $request->ticket_count + 1 ; $i++) { 
                 
                 $arr = [
@@ -144,7 +142,7 @@ class TicketTransactionController extends Controller
             }
 
             //redirect to index
-            return redirect("/payments")->with(['create_transaction_success' => 'Go Complate the Payment']);
+            return redirect("/transactions/payments")->with(['create_transaction_success' => 'Go Complate the Payment']);
         }
     }
 }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id('event_id');
             $table->integer("user_id");
-            $table->integer("transaction_id");
             $table->integer("wishlist_id");
             $table->integer("talent_id");
             $table->integer("event_price");

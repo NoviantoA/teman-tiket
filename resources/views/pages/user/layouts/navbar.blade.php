@@ -13,17 +13,17 @@
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon" style="width: 300px;" />
                 </form>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/categories.html">Tickets</a>
+                        <a class="nav-link" href="/categories.html">Partnership</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Transaction</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-left: 100px;margin-right: 20px">
                         <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
                     </li>
                     <li class="nav-item">

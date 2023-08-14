@@ -15,7 +15,7 @@ class User
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+    {   
         switch (Auth::user()->role_id) {
             case 1:
                 return redirect('/admin/dashboard');

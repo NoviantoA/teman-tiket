@@ -21,7 +21,6 @@ class event_seeders extends Seeder
         $new_arr = [
         'event_id' => $i,
         'user_id' => rand(4,6),
-        'transaction_id' => 0,
         'wishlist_id' => 0,
         'talent_id' => 0,
         'event_price'=>20000,
