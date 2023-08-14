@@ -35,18 +35,12 @@
                                 <li data-target="#storeCarousel" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="store/mitra/events/{{ $carousel[0]->event_poster }}" class="d-block img-fluid"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="store/mitra/events/{{ $carousel[1]->event_poster }}" class="d-block w-100"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="store/mitra/events/{{ $carousel[2]->event_poster }}" class="d-block w-100"
-                                        alt="Carousel Image" style="max-height: 400px; width: 100%; object-fit: cover;" />
-                                </div>
+                                @foreach ($bannerData as $index => $banner)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                        <img src="{{ url('store/admin/banner/' . $banner->banner_image) }}" class="d-block img-fluid"
+                                            alt="{{ $banner->banner_name }}" style="max-height: 400px; width: 100%; object-fit: cover;" />
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

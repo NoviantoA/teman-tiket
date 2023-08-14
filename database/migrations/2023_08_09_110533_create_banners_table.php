@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->id('ticket_id');
-            $table->foreignId('event_id');
-            $table->string('ticket_name');
-            $table->integer('ticket_capacity');
-            $table->integer('ticket_sold');
-            $table->string("ticket_status");
+        Schema::create('banners', function (Blueprint $table) {
+            $table->id('banner_id');
+            $table->string('banner_name');
+            $table->longText('banner_image');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('banners');
     }
 };

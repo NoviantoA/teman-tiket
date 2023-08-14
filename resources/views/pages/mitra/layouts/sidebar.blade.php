@@ -61,9 +61,9 @@
             <div class="collapse" id="withdraw">
                 <ul class="nav flex-column sub-menu">
                     {{-- add withdraw --}}
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Add Withdraw</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('withdraw.add') }}">Add Withdraw</a></li>
                     {{-- see withdraw --}}
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">See Withdraw</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('withdraw.get') }}">See Withdraw</a></li>
                 </ul>
             </div>
         </li>

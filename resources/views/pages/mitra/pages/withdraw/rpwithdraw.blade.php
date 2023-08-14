@@ -37,132 +37,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no=1; ?>
+                                        @foreach($withdraws as $data)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->bank->user->name }}</td>
+                                            <td>{{ $data->nominal }}</td>
+                                            <td>{{ $data->bank->bank_name }}</td>
+                                            <td>{{ $data->bank->bank_nomer_rekening }}</td>
+                                            <td>{{ $data->bank->bank_name_user }}</td>
+                                            <td>{{ $data->status }}</td>                                                                                 
                                         </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>0895337015446</td>
-                                            <td>Hello</td>
-                                            <td>Hello</td>
-                                        </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>
@@ -179,6 +65,17 @@
     {{-- @include('admin.layout.footer') --}}
 @endsection
 @push('scripts')
+@if (Session::has('success_message_withdraw'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil',
+        text: "{{ Session::get('success_message_withdraw') }}",
+        showConfirmButton: false,
+        timer: 3000 // milliseconds
+    });
+    </script>
+@endif
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 

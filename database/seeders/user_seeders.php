@@ -79,6 +79,18 @@ class user_seeders extends Seeder
             'updated_at'=>Carbon::now()
           ],
           [
+            'id' => 6,
+            'role_id' => 3,
+            'bank_id' => 1,
+            'name' => 'Noviantika Anggraini',
+            'email' => 'noviantika@gmail.com',
+            'password' => Hash::make('12345'),
+            'no_telp' =>  '08963919273912',
+            'img_profile' => '',
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now()
+          ],
+          [
             'id' => 5,
             'role_id' => 3,
             'bank_id' => 0,
