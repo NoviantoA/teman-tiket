@@ -353,7 +353,7 @@
                                         <div class="form-group">
                                             <label>Tanggal Event</label>
                                             <input class="form-control" type="date" id="dateEvents" name="event_date"
-                                                value="{{ $event->event_date }}" />
+                                                value="{{ substr($event->event_date, 0, 10) }}" />
                                         </div>
                                         <div class="form-group">
                                             <label>Harga Per Tiket</label>
@@ -377,7 +377,6 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Poster</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                                 <input type="file" class="form-control file-upload-info"
                                                     placeholder="Upload Image" name="event_poster"

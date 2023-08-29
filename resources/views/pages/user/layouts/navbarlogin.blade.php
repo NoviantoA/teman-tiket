@@ -18,7 +18,7 @@
                         <a class="nav-link" href="/">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/categories.html">Tickets</a>
+                        <a class="nav-link" href="/categories.html">Wishlists</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('index.history') }}">Histories</a>
@@ -29,8 +29,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('user/images/icon-user.png') }} " alt=""
-                                class="rounded-circle me-5 profile-picture" />
+                            <img src="{{ Auth::user()->img_profile == '' ? asset('user/images/icon-user.png') : 'store/user/profile/' . Auth::user()->img_profile }}"
+                                class="rounded-circle me-5 profile-picture" height="100px" width="50px" />
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -39,7 +39,7 @@
                             </p>
                             <a class="dropdown-item" href="#"><i class="bi bi-heart me-2"></i>Wishlist
                             </a>
-                            <a class="dropdown-item" href="/dashboard-account.html"><i
+                            <a class="dropdown-item" href="{{ route('index.setting') }}"><i
                                     class="bi bi-gear me-2"></i>Settings</a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item">

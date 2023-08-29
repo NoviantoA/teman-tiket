@@ -41,13 +41,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function role()
-    {
-        return $this->belongsTo(Roles::class, 'role_id');
-    }
-
-    public function banks()
-    {
-        return $this->hasMany(Banks::class, 'user_id');
-    }
 }

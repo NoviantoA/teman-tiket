@@ -61,28 +61,19 @@
             <div class="collapse" id="withdraw">
                 <ul class="nav flex-column sub-menu">
                     {{-- add withdraw --}}
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('withdraw.add') }}">Add Withdraw</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Add Withdraw</a></li>
                     {{-- see withdraw --}}
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('withdraw.get') }}">See Withdraw</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">See Withdraw</a></li>
                 </ul>
             </div>
         </li>
 
         {{-- Account  --}}
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="charts">
+            <a class="nav-link" href="{{ route('mitra.index.setting') }}">
                 <i class="ti-user mr-3"></i>
                 <span class="menu-title">Account</span>
-                <i class="menu-arrow"></i>
             </a>
-            {{-- manage account --}}
-            <div class="collapse" id="account">
-                <ul class="nav flex-column sub-menu">
-                    {{-- add account --}}
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Manage account</a>
-                    </li>
-                </ul>
-            </div>
         </li>
     </ul>
 </nav>

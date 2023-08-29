@@ -12,11 +12,13 @@
 
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                    <img src="{{ asset('admin/images/faces/face28.jpg') }}" alt="profile" />
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown"
+                    aria-expanded="false">
+                    <img src="{{ Auth::user()->img_profile == '' ? asset('user/images/icon-user.png') : '/store/mitra/profile/' . Auth::user()->img_profile }}"
+                        alt="profile" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
+                    <a class="dropdown-item" href="{{ route('mitra.index.setting') }}">
                         <i class="ti-settings text-primary"></i>
                         Settings
                     </a>

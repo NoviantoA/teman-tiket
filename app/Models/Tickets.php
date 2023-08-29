@@ -18,8 +18,4 @@ class Tickets extends Model
         "ticket_sold",
         "ticket_status"
     ];
-    public function event(): BelongsTo
-    {
-        return $this->belongsTo(Events::class, 'event_id', 'event_id');
-    }
 }

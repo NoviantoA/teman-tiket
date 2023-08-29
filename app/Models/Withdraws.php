@@ -15,9 +15,4 @@ class Withdraws extends Model
         "nominal",
         "status",
     ];
-
-    public function bank()
-    {
-        return $this->belongsTo(Banks::class, 'bank_id');
-    }
 }

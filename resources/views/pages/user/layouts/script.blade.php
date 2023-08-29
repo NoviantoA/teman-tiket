@@ -47,6 +47,15 @@
             )
         </script>
     @endif
+    @if ($message = Session::get('update_info_success'))
+        <script>
+            Swal.fire(
+                'Good Job!',
+                '{{ $message }}',
+                'success'
+            )
+        </script>
+    @endif
     @if ($message = Session::get('create_transaction_fail'))
         <script>
             Swal.fire(
@@ -57,6 +66,15 @@
         </script>
     @endif
     @if ($message = Session::get('transaction_validate_fail'))
+        <script>
+            Swal.fire(
+                'Sorry!',
+                '{{ $message }}',
+                'error'
+            )
+        </script>
+    @endif
+    @if ($message = Session::get('update_info_fail'))
         <script>
             Swal.fire(
                 'Sorry!',
@@ -109,6 +127,17 @@
                 'error'
             )
         </script>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ $error }}',
+                })
+            </script>
+        @endforeach
     @endif
     {{-- End Error Handler from controller --}}
 
