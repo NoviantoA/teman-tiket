@@ -31,6 +31,7 @@ class event_seeders extends Seeder
         'event_poster' => "surabaya.png",
         'event_description' => "Webinar bagus banget ini",
         'event_tag' => "Webinar",
+        'event_status' => "active",
         'created_at'=>Carbon::now(),
         'updated_at'=>Carbon::now()
         ];

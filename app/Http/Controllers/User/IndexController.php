@@ -14,9 +14,19 @@ class IndexController extends Controller
     public function index()
     {
         // Get Events
+<<<<<<< Updated upstream
         $carousel = Events::orderBy('event_id', "desc")->take(3)->get();
         $eventShow = Events::orderBy('event_id', "desc")->take(8)->get();
 
+=======
+        // $carousel = Events::orderBy('event_id',"desc")->take(3)->get();
+        $eventShow = Events::orderBy('event_id',"desc")->take(8)->get();
+
+        $bannerData = Banners::all();
+        // dd($eventShow);
+
+
+>>>>>>> Stashed changes
         return view(
             'pages.user.pages.index',
             compact(
