@@ -1,17 +1,15 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <style>
-    .dataTables_wrapper .dataTable .btn {
-        padding: 1rem 1rem;
-    }
-    .image-banner {
-        width: 200px;
-    }
-</style>
+    <link rel="stylesheet" href="{{ asset('all/vendors/jquery-datatable/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
+    <style>
+        .dataTables_wrapper .dataTable .btn {
+            padding: 1rem 1rem;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -26,13 +24,13 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table id="example1" class="table table-bordered table-striped"
+                                <table class="table table-bordered table-striped table-hover js-exportable"
                                    >
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>
-                                            <th>Nama Banner</th>
-                                            {{-- <th>Image</th> --}}
+                                            <th width="25%">Nama Banner</th>
+                                            <th>Image</th>
                                             <th width="100px">Action</th>
                                         </tr>
                                     </thead>
@@ -42,11 +40,9 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->banner_name }}</td>
-                                            {{-- <td>
-                                                    <div class="image-banner">
-                                                        <img src="{{ url('store/admin/banner/' . $data->banner_image) }}" width="250px" alt="logo">
-                                                    </div>
-                                            </td> --}}
+                                            <td>
+                                                    <img src="{{ url('store/admin/banner/' . $data->banner_image) }}" width="250px" alt="logo">
+                                            </td>
                                             {{-- <td>5</td> --}}
                                             <td class="text-center">
                                                 <a href="{{ route('admin.update.banner', ['banner_id' => $data->banner_id]) }}"  class="btn btn-warning me-2">Edit</a>
@@ -94,39 +90,15 @@
 @endforeach
 @endsection
 @push('scripts')
-<script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin/table/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('admin/table/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('admin/table/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('admin/table/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('all/vendors/bundles/datatablescripts.bundle.js') }}"></script>
+    <script src="{{ asset('all/vendors/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
 
 
 

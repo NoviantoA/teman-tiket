@@ -27,7 +27,7 @@
                             <div class="card card-tale">
                                 <div class="card-body">
                                     <p class="mb-4">Jenis Tiket</p>
-                                    <p class="fs-30 mb-2">{{ $ticketCount }}</p>
+                                    <p class="fs-30 mb-2">3</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <div class="card card-dark-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Jumlah Pembelian Tiket</p>
-                                    <p class="fs-30 mb-2">{{ $soldTicketCount }}</p>
+                                    <p class="fs-30 mb-2">61344</p>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="card card-light-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Jumlah Pendapatan</p>
-                                    <p class="fs-30 mb-2">{{ $totalRevenue }}</p>
+                                    <p class="fs-30 mb-2">34040</p>
                                     <p>Pendapatan Keseluruhan</p>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                             <div class="card card-light-danger">
                                 <div class="card-body">
                                     <p class="mb-4">Available Withdraw</p>
-                                    <p class="fs-30 mb-2">{{ $totalRevenueWithdraw }}</p>
+                                    <p class="fs-30 mb-2">47033</p>
                                     <p>Pendapatan yang bisa di withdraw</p>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                             <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
                                                 <div class="ml-xl-4 mt-3">
                                                     <p class="card-title">Detailed Penjualan Tiket</p>
-                                                    <h1 class="text-primary">{{ $soldTicketCount }}</h1>
+                                                    <h1 class="text-primary">34040</h1>
                                                     <h3 class="font-weight-500 mb-xl-4 text-primary">Tiket Dijual</h3>
                                                     <p class="mb-2 mb-xl-0">Berikut Merupakan Grafik Penjualan Tiket event
                                                         yang terjual</p>
@@ -85,26 +85,49 @@
                                                     <div class="col-md-6 border-right">
                                                         <div class="table-responsive mb-3 mb-md-0 mt-3">
                                                             <table class="table table-borderless report-table">
-                                                                @foreach ($soldTickets as $ticket)
-                                                                    <tr>
-                                                                        <td class="text-muted">{{ $ticket->ticket_name }}</td>
-                                                                        <td class="w-100 px-0">
-                                                                            <div class="progress progress-md mx-4">
-                                                                                @php
-                                                                                    $randomColor = ['bg-primary', 'bg-warning', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-dark'];
-                                                                                    $randomBgColor = $randomColor[array_rand($randomColor)];
-                                                                                @endphp
-                                                                                <div class="progress-bar {{ $randomBgColor }}" role="progressbar" style="width: {{ ($ticket->ticket_sold / $ticket->ticket_capacity) * 100 }}%;"
-                                                                                    aria-valuenow="{{ ($ticket->ticket_sold / $ticket->ticket_capacity) * 100 }}" aria-valuemin="0"
-                                                                                    aria-valuemax="100"></div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td>
-                                                                            <h5 class="font-weight-bold mb-0">{{ $ticket->ticket_sold }}</h5>
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </table>                                                            
+                                                                <tr>
+                                                                    <td class="text-muted">Presale 1</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-primary"
+                                                                                role="progressbar" style="width: 70%"
+                                                                                aria-valuenow="70" aria-valuemin="0"
+                                                                                aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0">713</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">Presale 2</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-warning"
+                                                                                role="progressbar" style="width: 30%"
+                                                                                aria-valuenow="30" aria-valuemin="0"
+                                                                                aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0">583</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">Presale 3</td>
+                                                                    <td class="w-100 px-0">
+                                                                        <div class="progress progress-md mx-4">
+                                                                            <div class="progress-bar bg-warning"
+                                                                                role="progressbar" style="width: 30%"
+                                                                                aria-valuenow="30" aria-valuemin="0"
+                                                                                aria-valuemax="100"></div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0">583</h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 mt-3">
@@ -140,27 +163,33 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <?php $no=1; ?>
-                                            @foreach($withdraws as $data)
-                                            <td>{{ $data->withdraw_id }}</td>
-                                            <td class="font-weight-bold">Rp {{ $data->nominal }}</td>
-                                            <td>{{ $data->created_at }}</td>
+                                            <td>Id Transaksi</td>
+                                            <td class="font-weight-bold">$362</td>
+                                            <td>21 Sep 2018</td>
                                             <td class="font-weight-medium">
-                                                @if($data->status == 'diajukan')
-                                                    <div class="badge badge-info">Diajukan</div>
-                                                @elseif($data->status == 'proses')
-                                                    <div class="badge badge-warning">Proses</div>
-                                                @elseif($data->status == 'sukses')
-                                                <div class="badge badge-success">Sukses</div>
-                                                @endif
+                                                <div class="badge badge-success">Completed</div>
                                             </td>
                                             <td class="font-weight-medium">
-                                                <a href="{{ route('withdraw.get') }}">
-                                                    <div class="badge badge-dark">Lihat Bukti Transaksi</div>
+                                                <a href="http://">
+
+                                                    <div class="badge badge-success">Lihat Bukti Transaksi</div>
                                                 </a>
                                             </td>
+
+
                                         </tr>
-                                        @endforeach
+                                        <tr>
+                                            <td>1243412414</td>
+                                            <td class="font-weight-bold">$551</td>
+                                            <td>28 Sep 2018</td>
+                                            <td class="font-weight-medium">
+                                                <div class="badge badge-warning">Pending</div>
+                                            </td>
+                                            <td class="font-weight-medium">
+                                                <div class="badge badge-warning">Transaksi Anda Masih diproses</div>
+                                            </td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>

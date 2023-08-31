@@ -8,7 +8,6 @@ use App\Models\Banks;
 use App\Models\Banners;
 use App\Models\Events;
 use App\Models\Tickets;
-use App\Models\Transactions;
 use App\Models\User;
 use App\Models\Withdraws;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -26,19 +25,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $totalMitra = User::where('role_id', 3)->count();
-        $totalEvent = Events::count();
-        $totalUser = User::where('role_id', 4)->count();
-        $totalTransaksi = Transactions::count();
-        $totalWithdraw = Withdraws::count();
-        $totalWithdrawDiajukan = Withdraws::where('status', 'diajukan')->count();
-        $totalWithdrawDiproses = Withdraws::where('status', 'diproses')->count();
-        $totalWithdrawSukses = Withdraws::where('status', 'sukses')->count();
-        $totalKeuangan = Transactions::sum('transaction_total');
-        $totalKeuntungan = Transactions::sum('transaction_app_service');
-        return view('pages.admin.dashboard', compact('totalMitra', 'totalEvent', 'totalUser', 'totalTransaksi', 'totalWithdraw'
-                                                    , 'totalWithdrawDiajukan', 'totalWithdrawDiproses', 'totalWithdrawSukses', 'totalKeuangan',
-                                                'totalKeuntungan'));
+        return view('pages.admin.dashboard');
     }
 
     public function logout()
@@ -122,11 +109,6 @@ class AdminController extends Controller
     public function reportWithdraw()
     {
         return view('pages.admin.pages.reports.rpwithdraw');
-    }
-
-    public function reportTransaksi(){
-        $transaksi = Transactions::all();
-        return view('pages.admin.pages.transaksi.view', compact('transaksi'));
     }
 
     public function manageBanner()

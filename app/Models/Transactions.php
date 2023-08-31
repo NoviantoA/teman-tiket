@@ -21,19 +21,5 @@ class Transactions extends Model
         "transaction_is_paid",
         "transaction_end_date",
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function event()
-    {
-        return $this->belongsTo(Events::class, 'event_id');
-    }
     
-    public function ticket()
-    {
-        return $this->belongsTo(Tickets::class, 'ticket_id');
-    }
 }
