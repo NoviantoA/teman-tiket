@@ -38,6 +38,7 @@
                                     aria-label="Slide 3"></button>
                             </div>
                             <div class="carousel-inner">
+<<<<<<< Updated upstream
                                 <div class="carousel-item active">
                                     <img src="store/mitra/events/{{ $carousel[0]->event_poster }}"
                                         class="d-block w-100 img-fluid"
@@ -52,6 +53,14 @@
                                     <img src="store/mitra/events/{{ $carousel[2]->event_poster }}" class="d-block w-100"
                                         style="max-height: 400px; width: 100%; object-fit: cover;">
                                 </div>
+=======
+                                @foreach ($bannerData as $index => $banner)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                        <img src="{{ url('store/admin/banner/' . $banner->banner_image) }}" class="d-block img-fluid"
+                                            alt="{{ $banner->banner_name }}" style="max-height: 400px; width: 100%; object-fit: contain;" />
+                                    </div>
+                                @endforeach
+>>>>>>> Stashed changes
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                                 data-bs-slide="prev">

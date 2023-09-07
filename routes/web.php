@@ -4,6 +4,15 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\TicketController;
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\MitraDashboardController;
+use App\Http\Controllers\User\IndexController;
+use App\Http\Controllers\User\TicketTransactionController;
+use App\Http\Controllers\User\HistoryController;
+use App\Http\Controllers\User\InvoiceController;
+>>>>>>> Stashed changes
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\User\IndexController;
@@ -74,9 +83,7 @@ Route::middleware(["auth", "user"])->group(function () {
 
 // Defined Route for Mitra Previlege
 Route::middleware(['auth', 'mitra'])->group(function () {
-    Route::get('/mitra/dashboard', function () {
-        return view('pages.mitra.dashboard');
-    })->name('mitra.dashboard');
+    Route::get('/mitra/dashboard', [MitraDashboardController::class, 'index'])->name('mitra.dashboard');
 
     // Defining Route For CRUD Events
     Route::get('/mitra/events', [EventController::class, 'get'])->name('events.get');

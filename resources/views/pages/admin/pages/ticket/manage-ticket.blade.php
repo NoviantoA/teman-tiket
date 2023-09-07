@@ -1,15 +1,14 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('all/vendors/jquery-datatable/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
-    <style>
-        .dataTables_wrapper .dataTable .btn {
-            padding: 1rem 1rem;
-        }
-    </style>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <style>
+    .dataTables_wrapper .dataTable .btn {
+        padding: 1rem 1rem;
+    }
+</style>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -24,7 +23,7 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -33,6 +32,7 @@
                                             <th>Penyelenggara</th>
                                             <th>Kuota</th>
                                             <th>Harga Tiket</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -46,6 +46,13 @@
                                             <td>{{ $data->event->user->name }}</td>
                                             <td>{{ $data->ticket_capacity }}</td>
                                             <td>{{ $data->event->event_price }}</td>
+                                            <td class="font-weight-medium">
+                                                @if($data->ticket_status == 'active')
+                                                    <div class="badge badge-success">Active</div>
+                                                @elseif($data->ticket_status == 'deactive')
+                                                    <div class="badge badge-danger">Deactive</div>
+                                                @endif
+                                            </td>
                                             <td class="text-center">
                                                 <form method="POST" action="{{ route('admin.update.ticket', ['ticket_id' => $data->ticket_id]) }}">
                                                     @csrf
@@ -76,19 +83,19 @@
         <div class="modal-dialog">
             <div class="modal-content bg-primary">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ $data->ticket_name }}</h4>
+                    <h4 class="modal-title text-white">{{ $data->ticket_name }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah Anda Ingin Mengubah Status {{ $data->ticket_status }} dari {{ $data->ticket_name }} menjadi  <span id="selectedStatus{{ $data->ticket_id }}"></span>?</p>
+                    <p class="text-white">Apakah Anda Ingin Mengubah Status {{ $data->ticket_status }} dari {{ $data->ticket_name }} menjadi  <span id="selectedStatus{{ $data->ticket_id }}"></span>?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <!-- Remove the link, as we will submit the form programmatically -->
-                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-light text-dark" data-dismiss="modal">Close</button>
                     <!-- Add an ID to the submit button -->
-                    <button id="submitBtn{{ $data->ticket_id }}" type="button" class="btn btn-outline-light" onclick="updateStatus({{ $data->ticket_id }})">Yes</button>
+                    <button id="submitBtn{{ $data->ticket_id }}" type="button" class="btn btn-outline-light text-dark" onclick="updateStatus({{ $data->ticket_id }})">Yes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -137,15 +144,39 @@
     </script>
 @endsection
 @push('scripts')
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
-    <script src="{{ asset('all/vendors/bundles/datatablescripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
 
 

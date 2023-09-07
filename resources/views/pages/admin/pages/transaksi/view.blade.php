@@ -1,15 +1,14 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('all/vendors/jquery-datatable/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
-    <style>
-        .dataTables_wrapper .dataTable .btn {
-            padding: 1rem 1rem;
-        }
-    </style>
+ <!-- DataTables -->
+ <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+ <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+ <style>
+   .dataTables_wrapper .dataTable .btn {
+       padding: 1rem 1rem;
+   }
+</style>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -24,231 +23,43 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>Id Transaksi</th>
                                             <th>Buyer</th>
                                             <th>Nama Event</th>
                                             <th>Jenis Tiket</th>
-                                            <th>Harga</th>
-                                            <th>Metode Pembayaran</th>
+                                            <th>Jumlah Tiket Dibeli</th>
+                                            <th>Total Pembayaran</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no=1; ?>
+                                        @foreach($transaksi as $data)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
+                                            <td>{{ $data->transaction_id }}</td>
+                                            <td>{{ $data->user->name }}</td>
+                                            {{-- <td>{{ $data->event->event_name }}</td> --}}
+                                            <td>{{ $data->event->event_name }}</td>
+                                            <td>{{ $data->ticket->ticket_name }}</td>
+                                            <td>{{ $data->transaction_ticket_count }}</td>
+                                            <td>{{ $data->transaction_total }}</td>
+                                            <td class="font-weight-medium">
+                                                @if($data->transaction_is_paid == 1)
+                                                    <div class="badge badge-success">Terbayar</div>
+                                                @elseif($data->transaction_is_paid == 0)
+                                                    <div class="badge badge-danger">Belum Dibayar</div>
+                                                @endif
+                                            </td>
+                                            {{-- <td>
                                                 <button type="submit" class="btn btn-warning me-2">Edit</button>
                                                 <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
+                                            </td> --}}
                                         </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-warning me-2">Edit</button>
-                                                <button type="submit" class="btn btn-danger me-2">Hapus</button>
-                                            </td>
-
-                                        </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -264,15 +75,39 @@
     {{-- @include('admin.layout.footer') --}}
 @endsection
 @push('scripts')
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
-    <script src="{{ asset('all/vendors/bundles/datatablescripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
 
 
@@ -281,3 +116,4 @@
     {{-- <script src="{{ asset('all/vendor/bundles/mainscripts.bundle.js') }}"></script> --}}
     <script src="{{ asset('all/vendors/bundles/jquery-datatable.js') }}"></script>
 @endpush
+
