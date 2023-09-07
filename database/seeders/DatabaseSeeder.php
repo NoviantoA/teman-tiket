@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(withdraw_seeder::class);
         $this->call(transaction_seeders::class);
         $this->call(ticket_user_seeders::class);
+        $this->call(wishlist_seeders::class);
     }
 }

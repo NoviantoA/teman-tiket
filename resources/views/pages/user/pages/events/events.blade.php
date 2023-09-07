@@ -105,29 +105,32 @@
                 </div>
                 <div class="row">
                     {{-- Event View List --}}
-                    @foreach ($events as $item)
-                        <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                            <a class="component-products d-block"
-                                href="{{ route('user.details', ['id' => Crypt::encryptString($item->event_id)]) }}">
-                                <div class="products-thumbnail">
+                    @foreach ($events as $event)
+                        <div class="col-6 col-md-4 col-lg-3 mb-3" data-aos="fade-up" data-aos-delay="100">
+                            <a class="component-products"
+                                href="{{ route('user.details', ['id' => Crypt::encryptString($event->event_id)]) }}">
+                                <div class="products-thumbnail mb-3">
                                     <div class="products-image"
                                         style="
-                      background-image: url('store/mitra/events/{{ $item->event_poster }}');
-                    ">
+                          background-image: url('store/mitra/events/{{ $event->event_poster }}');
+                        ">
                                     </div>
+
                                 </div>
-                                <div class="products-text">
-                                    {{ $item->event_name }}
-                                </div>
+                                <span class="products-text">{{ $event->event_name }}
+                                    <a href="{{ route('user.wishlists.change', ['id' => !empty($event->wishlist_id) ? $event->wishlist_id : 0, 'event_id' => $event->event_id]) }}"
+                                        style="margin-left:120px;" role="button"><i
+                                            class="bi {{ $event->wishlist == true ? 'bi-heart-fill' : 'bi-heart' }}"></i></a>
+                                </span>
                                 <p class="text-dark">Mulai Dari <span class="text-primary">Rp.
-                                        {{ $item->event_price }}</span></p>
+                                        {{ $event->event_price }}</span></p>
                                 <div class="deskripsi-card">
                                     <p><i class="fas fa-calendar me-2" width="32"> </i> 12 Maret 2023</p>
                                     <p><i class="fas fa-map-marker-alt me-2" width="32"> </i>
-                                        {{ $item->event_city }}</p>
-                                    <p><i class="fas fa-user-alt me-2"> </i>{{ $item->event_location }}</p>
+                                        {{ $event->event_city }}</p>
+                                    <p><i class="fas fa-user-alt me-2"> </i>{{ $event->event_location }}</p>
                                 </div>
-                                <input type="text" name="event_id" value="{{ $item->event_id }}" hidden>
+                                <input type="text" name="event_id" value="{{ $event->event_id }}" hidden>
                             </a>
 
                         </div>
