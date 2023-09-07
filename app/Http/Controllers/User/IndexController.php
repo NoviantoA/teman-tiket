@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Events;
+use App\Models\Wishlists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -13,6 +14,9 @@ class IndexController extends Controller
     //For User
     public function index()
     {
+        // get user id
+        $user_id = Auth::user() == null ? 0 : Auth::user()->id;
+
         // Get Events
         $carousel = Events::orderBy('event_id', "desc")->take(3)->get();
         $eventShow = Events::orderBy('event_id', "desc")->take(8)->get();
@@ -20,7 +24,6 @@ class IndexController extends Controller
         return view(
             'pages.user.pages.index',
             compact(
-                // "carousel",
                 "eventShow",
                 "carousel"
             ),
@@ -46,11 +49,29 @@ class IndexController extends Controller
     }
     public function detailAll()
     {
+        // get user id
+        $user_id = Auth::user() == null ? 0 : Auth::user()->id;
+
         // Get Events
         $events = Events::leftjoin("users", "users.id", "=", "events.user_id")
             ->leftjoin("tickets", "tickets.event_id", "=", "events.event_id")
             ->orderBy('events.event_id', "desc")
             ->get();
+
+        $wishlist = Wishlists::leftjoin("users", "users.id", "=", "wishlists.user_id")
+            ->leftjoin("events", "events.event_id", "=", "wishlists.event_id")
+            ->where("wishlists.user_id", "=", $user_id)
+            ->orderBy('wishlists.wishlist_id', "desc")
+            ->get();
+
+        foreach ($events as $key => $value) {
+            foreach ($wishlist as $key2 => $value2) {
+                if ($value->event_id == $value2->event_id) {
+                    $events[$key]->wishlist = true;
+                    $events[$key]->wishlist_id = $value2->wishlist_id;
+                }
+            }
+        }
 
         return view(
             'pages.user.pages.events.events',

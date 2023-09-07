@@ -14,14 +14,14 @@
                         aria-describedby="search-addon" style="width: 300px;" />
                 </form>
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="/">Events</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/categories.html">Partnership</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('user.partnership') }}">Partnership</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                    <li class="nav-item active ">
+                        <a class="nav-link" href="{{ route('user.about') }}">About</a>
                     </li>
                     <li class="nav-item" style="margin-left: 100px;margin-right: 20px">
                         <a class="nav-link" href="{{ route('register') }}">Sign Up</a>

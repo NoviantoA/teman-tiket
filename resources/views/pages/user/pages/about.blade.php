@@ -15,13 +15,12 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-md-6 col-sm-12">
-
                             <h2 class="text-primary mb-2">Teman Tiket</h2>
                             <h2 class="mb-3">Beli Tiket Harga Teman</h2>
                             <h6 class="mb-3">Nikmati kemudahan membeli dan menjual tiket di teman tiket. Anda dapat
                                 merasakan kenikmatan seperti anda
                                 membeli ke teman sendiri</h6>
-                            <a class="btn btn-success nav-link px-4 text-white" href="/login.html">Sign In</a>
+                            <a class="btn btn-success nav-link px-4 text-white" href="{{ route('login') }}">Sign In</a>
 
                         </div>
                         <div class="col-md-6 col-sm-12">

@@ -18,7 +18,7 @@
                         <a class="nav-link" href="/">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/categories.html">Wishlists</a>
+                        <a class="nav-link" href="{{ route('user.wishlists') }}">Wishlists</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('index.history') }}">Histories</a>

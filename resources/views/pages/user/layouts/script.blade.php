@@ -56,6 +56,15 @@
             )
         </script>
     @endif
+    @if ($message = Session::get('change_wishlist_success'))
+        <script>
+            Swal.fire(
+                'Good Job!',
+                '{{ $message }}',
+                'success'
+            )
+        </script>
+    @endif
     @if ($message = Session::get('create_transaction_fail'))
         <script>
             Swal.fire(

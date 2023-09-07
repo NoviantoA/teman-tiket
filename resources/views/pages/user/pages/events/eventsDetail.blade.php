@@ -40,7 +40,8 @@
             <section class="store-gallery" id="gallery">
                 <div class="container">
 
-                    <img src="/store/mitra/events/{{ $event->event_poster }}" width="100%" style="max-height: 400px"
+                    <img src="/store/mitra/events/{{ $event->event_poster }}"
+                        style="max-height: 400px; max-height:600px; margin-left:350px; object-fit:cover;"
                         alt="Poster Event">
 
 

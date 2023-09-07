@@ -19,6 +19,7 @@ use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\User\InvoiceController;
 use App\Http\Controllers\User\SettingController;
 use App\Http\Controllers\User\TicketTransactionController;
+use App\Http\Controllers\User\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +33,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/coba', function () {
-    return view('pages.mitra.pages.withdraw.rpwithdraw');
-});
-
 // Dashboard After Login
 
 Route::get('/admin/dashboard', function () {
@@ -48,6 +45,9 @@ Route::middleware("guest")->group(function () {
     Route::get('/details/{id}', [IndexController::class, "details"])->name('user.details');
     Route::get('/details', [IndexController::class, "detailAll"])->name('user.detailAll');
     Route::post('/details', [IndexController::class, "buyTicket"])->name('user.details.post');
+
+    Route::get("/about", [IndexController::class, "about"])->name("user.about");
+    Route::get("/partnership", [IndexController::class, "partnership"])->name("user.partnership");
 });
 // End Defined Route for guest
 
@@ -72,6 +72,11 @@ Route::middleware(["auth", "user"])->group(function () {
     Route::put("/setting/identification", [SettingController::class, "updateInfo"])->name("update.info.setting");
     Route::put("/setting/acc", [SettingController::class, "updateAcc"])->name("update.acc.setting");
     // End User Setting
+
+    // user wishlists
+    Route::get('/wishlists', [WishlistController::class, "index"])->name('user.wishlists');
+    Route::get('/wishlists/change/{id}', [WishlistController::class, "changeFromIndex"])->name('user.wishlists.change');
+    // end user wishlists
 
 });
 // End Defined Route for User Previlege
@@ -119,7 +124,7 @@ require __DIR__ . '/auth.php';
 
 Route::prefix('/admin')->group(function () {
     // admin login
-    Route::match (['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
+    Route::match(['get', 'post'], 'login', [AdminController::class, 'login'])->name('admin.login');
     Route::group(['middleware' => ['admin']], function () {
         // Admin Dashboard
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -128,19 +133,19 @@ Route::prefix('/admin')->group(function () {
         // manage mitra
         Route::get('/mitra', [AdminController::class, 'manageMitra'])->name('admin.manage.mitra');
         // tambah mitra
-        Route::match (['get', 'post'], '/add/mitra', [AdminController::class, 'addMitra'])->name('admin.add.mitra');
+        Route::match(['get', 'post'], '/add/mitra', [AdminController::class, 'addMitra'])->name('admin.add.mitra');
         // edit mitra
-        Route::match (['get', 'post'], '/edit/mitra/{id}', [AdminController::class, 'editMitra'])->name('admin.edit.mitra');
+        Route::match(['get', 'post'], '/edit/mitra/{id}', [AdminController::class, 'editMitra'])->name('admin.edit.mitra');
         // delete mitra
-        Route::match (['get', 'post'], '/delete/mitra/{id}', [AdminController::class, 'deleteMitra'])->name('admin.delete.mitra');
+        Route::match(['get', 'post'], '/delete/mitra/{id}', [AdminController::class, 'deleteMitra'])->name('admin.delete.mitra');
         // manage admin
         Route::get('/admin', [AdminController::class, 'manageAdmin'])->name('admin.manage.admin');
         // tambah admin
-        Route::match (['get', 'post'], '/add/admin', [AdminController::class, 'addAdmin'])->name('admin.add.admin');
+        Route::match(['get', 'post'], '/add/admin', [AdminController::class, 'addAdmin'])->name('admin.add.admin');
         // edit admin
-        Route::match (['get', 'post'], '/edit/admin/{id}', [AdminController::class, 'editAdmin'])->name('admin.edit.admin');
+        Route::match(['get', 'post'], '/edit/admin/{id}', [AdminController::class, 'editAdmin'])->name('admin.edit.admin');
         // delete admin
-        Route::match (['get', 'post'], '/delete/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete.admin');
+        Route::match(['get', 'post'], '/delete/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete.admin');
         // admin manage event
         // Admin Dashboard
         Route::get('event', [AdminController::class, 'manageEvent'])->name('admin.event');

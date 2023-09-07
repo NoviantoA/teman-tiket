@@ -256,7 +256,7 @@
                     <div class="col-lg-4">
                         <div class="card mt-3">
                             <img src="/store/mitra/events/{{ $event->event_poster }}" alt="Event Poster" width="400"
-                                height="200">
+                                height="200" style="object-fit: cover;">
                             <div class="card__content">
                                 <p class="card__title">{{ $event->event_name }}</p>
                                 <p class="card__description">{{ $event->event_location }} , {{ $event->event_city }}</p>
@@ -288,7 +288,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <img src="/store/mitra/events/{{ $event->event_poster }}" alt="Event Poster"
-                                        width="400" height="200" class="card-img-top">
+                                        width="400" height="200" class="card-img-top" style="object-fit: contain;">
                                     <br>
                                     <hr />
                                     <div class="container mt-3">
