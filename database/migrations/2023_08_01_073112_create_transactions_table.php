@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer("transaction_app_service");
             $table->integer("transaction_total");
             $table->integer("transaction_is_paid");
+            $table->string("qr_code");
             $table->timestamp("transaction_end_date");
             $table->timestamps();
         });

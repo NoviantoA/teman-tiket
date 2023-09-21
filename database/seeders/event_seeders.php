@@ -19,7 +19,7 @@ class event_seeders extends Seeder
         $new_arr = [
         'event_id' => $i,
         'user_id' => rand(4,6),
-        'wishlist_id' => 0,
+        // 'wishlist_id' => 0,
         'talent_id' => 0,
         'event_price'=>20000,
         'event_name' => "Webinar LPPM $i",
@@ -29,6 +29,7 @@ class event_seeders extends Seeder
         'event_poster' => "surabaya.png",
         'event_description' => "Webinar bagus banget ini",
         'event_tag' => "Webinar",
+        'event_status' => "Deactive",
         'created_at'=>Carbon::now(),
         'updated_at'=>Carbon::now()
         ];
