@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\MitraDashboardController;
 use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\TicketController;
-use App\Http\Controllers\MitraController;
-use App\Http\Controllers\MitraDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\User\IndexController;

@@ -46,7 +46,7 @@
                             </div>
                             <div class="detail-body justify-content-center p-3">
                                 <img src="/store/mitra/events/{{ $ticket->event_poster }}" style="margin-top: -30px;"
-                                    width="100%" height="200px" alt="Event Poster">
+                                    width="100%" height="100%" alt="Event Poster">
                                 <h3 class="my-4">{{ $ticket->event_name }}</h3>
                                 <div class="owner" style="margin-top: -10px;">By {{ $ticket->name }}</div>
                                 <div class="owner mt-2"> <i class="fas fa-map-marker-alt me-2"></i>
