@@ -107,7 +107,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Total Keuangan</p>
-                                <p class="fs-30 mb-2">Rp {{ $totalKeuangan }}</p>
+                                <p class="fs-30 mb-2">{{ $totalKeuangan }}</p>
                                 <p>Jumlah Mitra Yang Terdaftar</p>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Keuntungan Penjualan Tiket</p>
-                                <p class="fs-30 mb-2">Rp {{ $totalKeuntungan }}</p>
+                                <p class="fs-30 mb-2">{{ $totalKeuntungan }}</p>
                                 <p>Jumlah keselruhan Withdraw Diajukan</p>
                             </div>
                         </div>

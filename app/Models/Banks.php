@@ -21,4 +21,14 @@ class Banks extends Model
         "bank_name_user",
         "bank_is_verified",
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function withdraws()
+    {
+        return $this->hasMany(Withdraws::class, 'bank_id');
+    }
 }

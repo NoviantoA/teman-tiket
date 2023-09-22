@@ -1,13 +1,12 @@
 @extends('pages.admin.layouts.app')
 @push('css')
- <!-- DataTables -->
- <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
- <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
- <style>
-   .dataTables_wrapper .dataTable .btn {
-       padding: 1rem 1rem;
-   }
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+<style>
+  .dataTables_wrapper .dataTable .btn {
+      padding: 1rem 1rem;
+  }
 </style>
 @endpush
 @section('content')

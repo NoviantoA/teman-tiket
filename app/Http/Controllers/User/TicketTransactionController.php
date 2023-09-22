@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Illuminate\Support\Str;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class TicketTransactionController extends Controller
 {
@@ -127,8 +129,19 @@ class TicketTransactionController extends Controller
                 "transaction_end_date" => Carbon::now()->addDays(3),
                 "transaction_total" => (int) $request->total_payment,
                 "transaction_is_paid" => 0,
+                "qr_code" => Str::random(32)
             ]);
+        
+        $qrCodeText = "Transaction ID: " . $trans->transaction_id; 
+        $qrCodePath = 'store/qrcode/transaction_' . $trans->transaction_id . '.png'; 
 
+        QrCode::size(300)->generate($qrCodeText, public_path($qrCodePath));
+
+        
+        $trans->update([
+            "qr_code" => $qrCodePath,
+        ]);
+            
             // Insert into ticket user table
             for ($i = 1; $i < (int) $request->ticket_count + 1; $i++) {
 

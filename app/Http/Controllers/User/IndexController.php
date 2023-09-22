@@ -21,21 +21,6 @@ class IndexController extends Controller
         $carousel = Events::orderBy('event_id', "desc")->take(3)->get();
         $eventShow = Events::orderBy('event_id', "desc")->take(8)->get();
 
-        $wishlist = Wishlists::leftjoin("users", "users.id", "=", "wishlists.user_id")
-            ->leftjoin("events", "events.event_id", "=", "wishlists.event_id")
-            ->where("wishlists.user_id", "=", $user_id)
-            ->orderBy('wishlists.wishlist_id', "desc")
-            ->get();
-
-        foreach ($eventShow as $key => $value) {
-            foreach ($wishlist as $key2 => $value2) {
-                if ($value->event_id == $value2->event_id) {
-                    $eventShow[$key]->wishlist = true;
-                    $eventShow[$key]->wishlist_id = $value2->wishlist_id;
-                }
-            }
-        }
-
         return view(
             'pages.user.pages.index',
             compact(
@@ -123,15 +108,5 @@ class IndexController extends Controller
                 "ticket_count" => (int) $request->ticket_count,
             ],
         ]);
-    }
-
-    public function about()
-    {
-        return view('pages.user.pages.about');
-    }
-
-    public function partnership()
-    {
-        return view('pages.user.pages.partnership');
     }
 }

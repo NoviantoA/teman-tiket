@@ -1,13 +1,12 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <style>
-    .dataTables_wrapper .dataTable .btn {
-        padding: 1rem 1rem;
-    }
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+<style>
+  .dataTables_wrapper .dataTable .btn {
+      padding: 1rem 1rem;
+  }
 </style>
 @endpush
 @section('content')
@@ -166,8 +165,6 @@
       });
     });
   </script>
-    <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>

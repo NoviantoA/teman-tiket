@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("event_poster");
             $table->string("event_description");
             $table->string("event_tag");
+            $table->string("event_status");
             $table->timestamps();
         });
     }

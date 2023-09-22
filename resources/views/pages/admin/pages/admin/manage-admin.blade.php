@@ -1,13 +1,12 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <style>
-    .dataTables_wrapper .dataTable .btn {
-        padding: 1rem 1rem;
-    }
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+<style>
+  .dataTables_wrapper .dataTable .btn {
+      padding: 1rem 1rem;
+  }
 </style>
 @endpush
 @section('content')
@@ -30,7 +29,7 @@
                                             <th>Nama Admin</th>
                                             <th>Nomor Telephon</th>
                                             <th>Gmail</th>
-                                            <th width="80px">Action</th>
+                                            <th width="150px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,18 +67,18 @@
         <div class="modal-dialog">
             <div class="modal-content bg-danger">
                 <div class="modal-header">
-                    <h4 class="modal-title text-white">{{ $data->name }}</h4>
+                    <h4 class="modal-title">{{ $data->name }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-white">Apakah Anda Ingin Menghapus Data Ini?&hellip;</p>
+                    <p>Apakah Anda Ingin Menghapus Data Ini?&hellip;</p>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-outline-light text-dark" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
                     <a href="{{ route('admin.delete.admin', ['id' => $data->id]) }}" type="button"
-                        class="btn btn-outline-light text-dark">Yes</a>
+                        class="btn btn-outline-light">Yes</a>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -106,8 +105,6 @@
       });
     });
   </script>
-    <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>

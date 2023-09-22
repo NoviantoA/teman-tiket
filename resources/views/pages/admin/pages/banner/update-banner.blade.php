@@ -18,7 +18,6 @@
                             <div class="form-group">
                                 <label for="exampleInputName1">Foto Banner</label>
                                 <input type="file" class="form-control" id="rekening" name="banner_image">
-                                <br>
                                 @if ($banner->banner_image)
                                     <img src="{{ asset('store/admin/banner/' . $banner->banner_image) }}" width="280px" height="175px" alt="photo banner">
                                 @else

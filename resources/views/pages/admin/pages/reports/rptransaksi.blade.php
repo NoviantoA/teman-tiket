@@ -1,13 +1,12 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <style>
-    .dataTables_wrapper .dataTable .btn {
-        padding: 1rem 1rem;
-    }
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+<style>
+  .dataTables_wrapper .dataTable .btn {
+      padding: 1rem 1rem;
+  }
 </style>
 @endpush
 @section('content')
@@ -26,157 +25,34 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id Transaksi</th>
-                                            <th>Buyer</th>
+                                            <th>No</th>
                                             <th>Nama Event</th>
                                             <th>Jenis Tiket</th>
-                                            <th>Harga</th>
-                                            <th>Metode Pembayaran</th>
-                                            <th>Status</th>
-
+                                            <th>Buyer</th>
+                                            <th>Jumlah Tiket</th>
+                                            <th>Total Pembayaran</th>
+                                            <th>Status Pembayaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no=1; ?>
+                                        @foreach($transaksi as $data)
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $data->event->event_name }}</td>
+                                            <td>{{ $data->ticket->ticket_name }}</td>
+                                            <td>{{ $data->user->name }}</td>
+                                            <td>{{ $data->transaction_ticket_count }}</td>
+                                            <td>{{ $data->transaction_total }}</td>
+                                            <td>
+                                               @if ($data->transaction_is_paid === 0)
+                                                   <div class="badge badge-danger">Belum Dibayar</div>
+                                                @elseif ($data->transaction_is_paid === 1)
+                                                    <div class="badge badge-success">Terbayar</div>
+                                               @endif
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2008</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                            <td>LPPM</td>
-                                        </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>

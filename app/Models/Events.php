@@ -26,4 +26,14 @@ class Events extends Model
         "event_tag",
         'event_status',
     ];
+
+    public function ticket(): BelongsTo
+    {
+        return $this->belongsTo(Tickets::class, 'event_id', 'event_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

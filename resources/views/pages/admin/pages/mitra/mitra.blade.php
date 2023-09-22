@@ -41,6 +41,10 @@
                                 <label for="exampleInputName1">Password Mitra</label>
                                 <input type="password" class="form-control" id="rekening" name="password" placeholder="Password Mitra">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Alamat Mitra</label>
+                                <input type="text" class="form-control" id="rekening" name="address" placeholder="Alamat Mitra">
+                            </div>
                             {{-- <div class="form-group">
                                 <label for="exampleInputName1">Image</label>
                                 <input type="file" class="form-control" id="rekening" name="img_profile">

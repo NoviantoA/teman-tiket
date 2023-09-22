@@ -126,7 +126,7 @@ class AdminController extends Controller
 
     public function reportTransaksi(){
         $transaksi = Transactions::all();
-        return view('pages.admin.pages.transaksi.view', compact('transaksi'));
+        return view('pages.admin.pages.reports.rptransaksi', compact('transaksi'));
     }
 
     public function manageBanner()
@@ -151,22 +151,17 @@ class AdminController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'no_telp' => 'required',
-                'img_profile' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'address' => 'required',
             ];
-
             $customMessages = [
                 'name.required' => 'Nama mitra harus diisi!!!',
                 'email.required' => 'Email harus diisi!!!',
                 'email.email' => 'Email tidak sesuai format!!!',
                 'password.required' => 'Password harus diisi!!!',
                 'no_telp.required' => 'Nomor Telepon harus diisi!!!',
-                'img_profile.image' => 'File yang diupload harus berupa gambar.',
-                'img_profile.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif.',
-                'img_profile.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
+                'address.required' => 'Alamat harus diisi!!!',
             ];
-
             $this->validate($request, $rules, $customMessages);
-
             // upload mitra photo
             // if ($request->hasFile('img_profile')) {
             //     $img_tmp = $request->file('img_profile');
@@ -180,7 +175,6 @@ class AdminController extends Controller
             //         Image::make($img_tmp)->save(public_path($imagePath));
             //     }
             // }
-
             $mitra = new User();
             $mitra->role_id = 3;
             $mitra->bank_id = 0;
@@ -193,9 +187,11 @@ class AdminController extends Controller
             //     // Save the image name only if an image was uploaded
             //     $mitra->img_profile = $imageName;
             // }
+            $mitra->born_date = '';
+            $mitra->gender = '';
+            $mitra->address = $data['address'];
             $mitra->img_profile = 0;
             $mitra->save();
-
             return redirect()->route('admin.manage.mitra')->with('success_message', 'Data mitra baru berhasil disimpan');
         }
         return view('pages.admin.pages.mitra.mitra', compact('bankData'));
@@ -226,11 +222,14 @@ class AdminController extends Controller
             $mitra = new User();
             $mitra->role_id = 2;
             $mitra->bank_id = 0;
-            $mitra->event_id = 0;
+            // $mitra->event_id = 0;
             $mitra->name = $data['name'];
             $mitra->email = $data['email'];
             $mitra->password = bcrypt($data['password']);
             $mitra->no_telp = $data['no_telp'];
+            $mitra->address = '';
+            $mitra->born_date = '';
+            $mitra->gender = '';
             $mitra->img_profile = 0;
             $mitra->save();
 
@@ -239,25 +238,67 @@ class AdminController extends Controller
         return view('pages.admin.pages.admin.admin');
     }
 
+    // public function addBanner(Request $request)
+    // {
+    //     if ($request->isMethod('post')) {
+    //         $data = $request->all();
+
+    //         $rules = [
+    //             'banner_name' => 'required',
+    //             'banner_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         ];
+
+    //         $customMessages = [
+    //             'banner_name.required' => 'Nama banner harus diisi!!!',
+    //             'banner_image.image' => 'File yang diupload harus berupa gambar.',
+    //             'banner_image.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif.',
+    //             'banner_image.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
+    //         ];
+
+    //         $this->validate($request, $rules, $customMessages);
+
+    //         // upload banner photo
+    //         if ($request->hasFile('banner_image')) {
+    //             $img_tmp = $request->file('banner_image');
+    //             if ($img_tmp->isValid()) {
+    //                 // get image extension
+    //                 $extension = $img_tmp->getClientOriginalExtension();
+    //                 // generate new image name
+    //                 $imageName = rand(111, 99999) . '.' . $extension;
+    //                 $imagePath = 'store/admin/banner/' . $imageName;
+    //                 // upload image
+    //                 Image::make($img_tmp)->save(public_path($imagePath));
+    //             }
+    //         }
+
+    //         $banner = new Banners();
+    //         $banner->banner_name = $data['banner_name'];
+    //         if (isset($imageName)) {
+    //             // Save the image name only if an image was uploaded
+    //             $banner->banner_image = $imageName;
+    //         }
+    //         $banner->save();
+
+    //         return redirect()->route('admin.manage.banner')->with('success_message', 'Data banner berhasil disimpan');
+    //     }
+    //     return view('pages.admin.pages.banner.add-banner');
+    // }
+
     public function addBanner(Request $request)
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
-
             $rules = [
                 'banner_name' => 'required',
                 'banner_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ];
-
             $customMessages = [
                 'banner_name.required' => 'Nama banner harus diisi!!!',
                 'banner_image.image' => 'File yang diupload harus berupa gambar.',
                 'banner_image.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif.',
                 'banner_image.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
             ];
-
             $this->validate($request, $rules, $customMessages);
-
             // upload banner photo
             if ($request->hasFile('banner_image')) {
                 $img_tmp = $request->file('banner_image');
@@ -271,7 +312,6 @@ class AdminController extends Controller
                     Image::make($img_tmp)->save(public_path($imagePath));
                 }
             }
-
             $banner = new Banners();
             $banner->banner_name = $data['banner_name'];
             if (isset($imageName)) {
@@ -279,12 +319,11 @@ class AdminController extends Controller
                 $banner->banner_image = $imageName;
             }
             $banner->save();
-
             return redirect()->route('admin.manage.banner')->with('success_message', 'Data banner berhasil disimpan');
         }
         return view('pages.admin.pages.banner.add-banner');
     }
-
+    
     public function addDiscount()
     {
         return view('pages.admin.pages.diskon.add-diskon');
@@ -562,70 +601,70 @@ class AdminController extends Controller
         }
     }
 
-    public function updateBanner(Request $request, $banner_id)
-    {
-        try {
-            // Fetch banner data by ID
-            $banner = Banners::findOrFail($banner_id);
-        } catch (ModelNotFoundException $e) {
-            // jika id banner tidak ditemukan redirect error message
-            return redirect()->route('admin.manage.banner')->with('error_message_not_found', 'Data banner tidak ditemukan');
-        }
-        if ($request->isMethod('post')) {
-            $data = $request->all();
+    // public function updateBanner(Request $request, $banner_id)
+    // {
+    //     try {
+    //         // Fetch banner data by ID
+    //         $banner = Banners::findOrFail($banner_id);
+    //     } catch (ModelNotFoundException $e) {
+    //         // jika id banner tidak ditemukan redirect error message
+    //         return redirect()->route('admin.manage.banner')->with('error_message_not_found', 'Data banner tidak ditemukan');
+    //     }
+    //     if ($request->isMethod('post')) {
+    //         $data = $request->all();
 
-            $rules = [
-                'banner_name' => 'required',
-                'banner_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            ];
+    //         $rules = [
+    //             'banner_name' => 'required',
+    //             'banner_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         ];
 
-            $customMessages = [
-                'banner_name.required' => 'Nama banner harus diisi!!!',
-                'banner_image.image' => 'File yang diupload harus berupa gambar.',
-                'banner_image.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif.',
-                'banner_image.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
-            ];
+    //         $customMessages = [
+    //             'banner_name.required' => 'Nama banner harus diisi!!!',
+    //             'banner_image.image' => 'File yang diupload harus berupa gambar.',
+    //             'banner_image.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif.',
+    //             'banner_image.max' => 'Ukuran gambar tidak boleh lebih dari 2 MB.',
+    //         ];
 
-            $validator = Validator::make($data, $rules, $customMessages);
+    //         $validator = Validator::make($data, $rules, $customMessages);
 
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
+    //         if ($validator->fails()) {
+    //             return redirect()->back()->withErrors($validator)->withInput();
+    //         }
 
-            // Upload banner photo
-            if ($request->hasFile('banner_image')) {
-                $img_tmp = $request->file('banner_image');
-                if ($img_tmp->isValid()) {
-                    // Get image extension
-                    $extension = $img_tmp->getClientOriginalExtension();
-                    // Generate new image name
-                    $imageName = rand(111, 99999) . '.' . $extension;
-                    $imagePath = 'store/admin/banner/' . $imageName;
-                    // Upload image
-                    Image::make($img_tmp)->save(public_path($imagePath));
+    //         // Upload banner photo
+    //         if ($request->hasFile('banner_image')) {
+    //             $img_tmp = $request->file('banner_image');
+    //             if ($img_tmp->isValid()) {
+    //                 // Get image extension
+    //                 $extension = $img_tmp->getClientOriginalExtension();
+    //                 // Generate new image name
+    //                 $imageName = rand(111, 99999) . '.' . $extension;
+    //                 $imagePath = 'store/admin/banner/' . $imageName;
+    //                 // Upload image
+    //                 Image::make($img_tmp)->save(public_path($imagePath));
 
-                    // Delete old image if it exists
-                    if ($banner->banner_image && File::exists('store/admin/banner/' . $banner->banner_image)) {
-                        File::delete('store/admin/banner/' . $banner->banner_image);
-                    }
+    //                 // Delete old image if it exists
+    //                 if ($banner->banner_image && File::exists('store/admin/banner/' . $banner->banner_image)) {
+    //                     File::delete('store/admin/banner/' . $banner->banner_image);
+    //                 }
 
-                    // Save the new image name to the database
-                    $banner->banner_image = $imageName;
-                }
-            }
+    //                 // Save the new image name to the database
+    //                 $banner->banner_image = $imageName;
+    //             }
+    //         }
 
-            // Update banner model with new data
-            $banner->banner_name = $data['banner_name'];
-            if (isset($imageName)) {
-                // Save the image name only if an image was uploaded
-                $banner->banner_image = $imageName;
-            }
-            $banner->save();
+    //         // Update banner model with new data
+    //         $banner->banner_name = $data['banner_name'];
+    //         if (isset($imageName)) {
+    //             // Save the image name only if an image was uploaded
+    //             $banner->banner_image = $imageName;
+    //         }
+    //         $banner->save();
 
-            return redirect()->route('admin.manage.banner')->with('success_message_update', 'Data banner berhasil diperbarui');
-        }
-        return view('pages.admin.pages.banner.update-banner', compact('banner'));
-    }
+    //         return redirect()->route('admin.manage.banner')->with('success_message_update', 'Data banner berhasil diperbarui');
+    //     }
+    //     return view('pages.admin.pages.banner.update-banner', compact('banner'));
+    // }
 
      /*
     ==================================================== DELETE ==========================================================

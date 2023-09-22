@@ -1,16 +1,12 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <style>
-    .dataTables_wrapper .dataTable .btn {
-        padding: 1rem 1rem;
-    }
-    .image-banner {
-        width: 200px;
-    }
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+<style>
+  .dataTables_wrapper .dataTable .btn {
+      padding: 1rem 1rem;
+  }
 </style>
 @endpush
 @section('content')
@@ -26,13 +22,12 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table id="example1" class="table table-bordered table-striped"
-                                   >
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th width="5%">No</th>
-                                            <th>Nama Banner</th>
-                                            {{-- <th>Image</th> --}}
+                                            <th width="25%">Nama Banner</th>
+                                            <th>Image</th>
                                             <th width="100px">Action</th>
                                         </tr>
                                     </thead>
@@ -42,11 +37,9 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->banner_name }}</td>
-                                            {{-- <td>
-                                                    <div class="image-banner">
-                                                        <img src="{{ url('store/admin/banner/' . $data->banner_image) }}" width="250px" alt="logo">
-                                                    </div>
-                                            </td> --}}
+                                            <td>
+                                                    <img src="{{ url('store/admin/banner/' . $data->banner_image) }}" width="250px" alt="logo">
+                                            </td>
                                             {{-- <td>5</td> --}}
                                             <td class="text-center">
                                                 <a href="{{ route('admin.update.banner', ['banner_id' => $data->banner_id]) }}"  class="btn btn-warning me-2">Edit</a>
@@ -111,8 +104,6 @@
       });
     });
   </script>
-    <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>

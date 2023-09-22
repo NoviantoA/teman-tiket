@@ -31,7 +31,7 @@ class Transactions extends Model
     {
         return $this->belongsTo(Events::class, 'event_id');
     }
-    
+
     public function ticket()
     {
         return $this->belongsTo(Tickets::class, 'ticket_id');
