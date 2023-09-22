@@ -19,7 +19,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Mitra</p>
-                                <p class="fs-30 mb-2">4006</p>
+                                <p class="fs-30 mb-2">{{ $totalMitra }}</p>
                                 <p>Jumlah Mitra Yang Terdaftar</p>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Event</p>
-                                <p class="fs-30 mb-2">61344</p>
+                                <p class="fs-30 mb-2">{{ $totalEvent }}</p>
                                 <p>Jumlah event yang dibuat</p>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="card card-light-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah User</p>
-                                <p class="fs-30 mb-2">34040</p>
+                                <p class="fs-30 mb-2">{{ $totalUser }}</p>
                                 <p>Jumlah User Teman Tiket</p>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="card card-light-danger">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Transaksi</p>
-                                <p class="fs-30 mb-2">47033</p>
+                                <p class="fs-30 mb-2">{{ $totalTransaksi }}</p>
                                 <p>Jumlah Transaksi Pada teman Tiket</p>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Total Withdraw</p>
-                                <p class="fs-30 mb-2">4006</p>
+                                <p class="fs-30 mb-2">{{ $totalWithdraw }}</p>
                                 <p>Jumlah Mitra Yang Terdaftar</p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Withdraw Diajukan</p>
-                                <p class="fs-30 mb-2">61344</p>
+                                <p class="fs-30 mb-2">{{ $totalWithdrawDiajukan }}</p>
                                 <p>Jumlah keselruhan Withdraw Diajukan</p>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                         <div class="card card-light-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Withdraw Diproses</p>
-                                <p class="fs-30 mb-2">34040</p>
+                                <p class="fs-30 mb-2">{{ $totalWithdrawDiproses }}</p>
                                 <p>Jumlah Keseluruhan Withdraw Diproses</p>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                         <div class="card card-light-danger">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Withdraw Sukses</p>
-                                <p class="fs-30 mb-2">47033</p>
+                                <p class="fs-30 mb-2">{{ $totalWithdrawSukses }}</p>
                                 <p>Jumlah Keseluruhan withdraw sukses</p>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="card card-tale">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Total Keuangan</p>
-                                <p class="fs-30 mb-2">4006</p>
+                                <p class="fs-30 mb-2">Rp {{ $totalKeuangan }}</p>
                                 <p>Jumlah Mitra Yang Terdaftar</p>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Jumlah Keuntungan Penjualan Tiket</p>
-                                <p class="fs-30 mb-2">61344</p>
+                                <p class="fs-30 mb-2">Rp {{ $totalKeuntungan }}</p>
                                 <p>Jumlah keselruhan Withdraw Diajukan</p>
                             </div>
                         </div>

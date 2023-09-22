@@ -1,15 +1,15 @@
 @extends('pages.admin.layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ asset('all/vendors/jquery-datatable/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('all/vendors/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css') }}">
-    <style>
-        .dataTables_wrapper .dataTable .btn {
-            padding: 1rem 1rem;
-        }
-    </style>
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/table/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <style>
+    .dataTables_wrapper .dataTable .btn {
+        padding: 1rem 1rem;
+    }
+</style>
+</style>
 @endpush
 @section('content')
     <div class="content-wrapper">
@@ -24,7 +24,7 @@
                         <div class="body">
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover  dataTable js-exportable">
+                                <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -62,15 +62,39 @@
     {{-- @include('admin.layout.footer') --}}
 @endsection
 @push('scripts')
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
     <script src="{{ asset('all/vendors/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('all/vendors/bundles/vendorscripts.bundle.js') }}"></script>
 
-    <script src="{{ asset('all/vendors/bundles/datatablescripts.bundle.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.colVis.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('all/vendors/jquery-datatable/buttons/buttons.print.min.js') }}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('admin/table/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin/table/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('admin/table/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('admin/table/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
 
 
