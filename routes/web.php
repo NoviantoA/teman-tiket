@@ -1,18 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\MitraDashboardController;
 use App\Http\Controllers\Mitra\BankController;
 use App\Http\Controllers\Mitra\EventController;
 use App\Http\Controllers\Mitra\TicketController;
-<<<<<<< Updated upstream
-=======
-use App\Http\Controllers\MitraController;
-use App\Http\Controllers\MitraDashboardController;
-use App\Http\Controllers\User\IndexController;
-use App\Http\Controllers\User\TicketTransactionController;
-use App\Http\Controllers\User\HistoryController;
-use App\Http\Controllers\User\InvoiceController;
->>>>>>> Stashed changes
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\User\IndexController;
